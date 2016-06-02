@@ -1,27 +1,31 @@
 package com.phonebook.model;
 
-import com.sun.istack.internal.NotNull;
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import java.io.Serializable;
-
-/**
- * Created by PunKHS on 07.05.2016.
- */
-
-@Entity
-@Table(name = "department", schema = "public")
-public class Department implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @NotNull
+public class Department  {
+    private int id;
     private String name;
-    @NotNull
-    private String shortName;
-    private Long parent;
+    private int head;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getHead() {
+        return head;
+    }
+
+    public void setHead(int head) {
+        this.head = head;
+    }
 }
