@@ -17,7 +17,7 @@
         <jstl.version>1.2</jstl.version>
         <servlet.version>3.1.0</servlet.version>
         <!--Spring-->
-        <spring.version>4.2.3.RELEASE</spring.version>
+        <spring.version>4.2.6.RELEASE</spring.version>
         <spring.data.jpa.version>1.5.0.RELEASE</spring.data.jpa.version>
         <jpa.version>1.0.0.Final</jpa.version>
         <!--Валидация-->
@@ -83,12 +83,14 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- Test Artifacts with Spring-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -139,6 +141,7 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -146,32 +149,18 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <compilerArgument>-Xlint:all</compilerArgument>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
-
-            <!--<plugin>-->
-                <!--<groupId>org.apache.tomcat.maven</groupId>-->
-                <!--<artifactId>tomcat8-maven-plugin</artifactId>-->
-                <!--<version>2.2</version>-->
-                <!--<configuration>-->
-                    <!--<url>http://localhost:8080/manager/text</url>-->
-                    <!--<server>TomcatServer</server>-->
-                    <!--<path>/mkyongWebApp</path>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
 
 
         </plugins>
         <!--need to find configs in tests in package web-inf like
         @ContextConfiguration(locations = {"classpath:/config/application-context.xml"
         -->
-        <testResources>
-            <testResource>
-                <directory>src/main/webapp/WEB-INF/config</directory>
-            </testResource>
-        </testResources>
+        <!--<testResources>-->
+            <!--<testResource>-->
+                <!--<directory>src/main/webapp/WEB-INF/config</directory>-->
+            <!--</testResource>-->
+        <!--</testResources>-->
     </build>
 </project>
