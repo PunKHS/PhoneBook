@@ -22,19 +22,19 @@
         <jpa.version>1.0.0.Final</jpa.version>
         <!--Валидация-->
         <jsr349.version>1.1.0.Final</jsr349.version>
-        <!-- Logging -->
+        <!--Logging-->
         <!--logback - improved version of log4j-->
         <logback.version>1.0.13</logback.version>
         <slf4j.version>1.7.13</slf4j.version>
-        <!-- JUnit test -->
+        <!--JUnit test-->
         <junit.version>4.12</junit.version>
-        <!-- HSQLDB embedded database -->
+        <!--HSQLDB embedded database-->
         <hsqldb.version>2.3.3</hsqldb.version>
-        <!-- Hibernate / JPA -->
+        <!--Hibernate / JPA -->
         <hibernate.version>5.0.1.Final</hibernate.version>
         <!--Hibernate validator (contains @NotEmpty)-->
         <hibernate-validator.version>5.1.0.Final</hibernate-validator.version>
-        <!-- Spring Data -->
+        <!--Spring Data-->
         <spring-framework.data.version>1.9.1.RELEASE</spring-framework.data.version>
     </properties>
 

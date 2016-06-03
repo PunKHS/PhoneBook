@@ -17,17 +17,17 @@ public class ORMController {
     @Autowired
     private ORMService ormService;
 
-    @RequestMapping(value = "/ormFindAllEmployee", method = RequestMethod.GET)
-    public ModelAndView ormFindAllEmployee() {
-        System.out.println("ORMController ormFindAllEmployees is called");
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView queryFindAllEmployee() {
+        System.out.println("ORMController queryFindAllEmployee is called");
         List<Employee> Employees = ormService.queryFindAllEmployee();
-        return new ModelAndView("/orm/orm", "resultObject", Employees);
+        return new ModelAndView("/index", "resultObject", Employees);
     }
 
     @RequestMapping(value = "/queryFindByIdEmployee/{id}", method = RequestMethod.GET)
     public ModelAndView queryFindByIdEmployee(@PathVariable("id") int id) {
         System.out.println("ORMController queryFindByIdEmployee is called");
         Employee Employee = ormService.queryFindEmployeeById(id);
-        return new ModelAndView("/orm/orm", "resultObject", Employee);
+        return new ModelAndView("/index", "resultObject", Employee);
     }
 }
