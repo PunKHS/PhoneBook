@@ -26,10 +26,16 @@
         <!--logback - improved version of log4j-->
         <logback.version>1.0.13</logback.version>
         <slf4j.version>1.7.13</slf4j.version>
-        <!-- HSQLDB embedded database -->
-        <hsqldb.version>2.3.3</hsqldb.version>
         <!-- JUnit test -->
         <junit.version>4.12</junit.version>
+        <!-- HSQLDB embedded database -->
+        <hsqldb.version>2.3.3</hsqldb.version>
+        <!-- Hibernate / JPA -->
+        <hibernate.version>5.0.1.Final</hibernate.version>
+        <!--Hibernate validator (contains @NotEmpty)-->
+        <hibernate-validator.version>5.1.0.Final</hibernate-validator.version>
+        <!-- Spring Data -->
+        <spring-framework.data.version>1.9.1.RELEASE</spring-framework.data.version>
     </properties>
 
     <dependencies>
@@ -94,7 +100,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Hibernate -->
+        <!-- JPA -->
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
@@ -122,6 +128,14 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- jUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- HSQLDB embedded database -->
         <dependency>
             <groupId>org.hsqldb</groupId>
@@ -129,12 +143,25 @@
             <version>${hsqldb.version}</version>
         </dependency>
 
-        <!-- jUnit -->
+        <!--Hibernate ORM-->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <!--Hibernate validator (contains @NotEmpty)-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+
+        <!--Spring Data-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-framework.data.version}</version>
         </dependency>
 
     </dependencies>
