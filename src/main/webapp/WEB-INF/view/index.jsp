@@ -51,7 +51,7 @@
                     </table>
 
 
-                    <c:url value="/" var="queryFindAllEmployee"/>
+                    <c:url value="/index" var="queryFindAllEmployee"/>
                     <a href="${queryFindAllEmployee}" class="list-group-item">Find All Users</a>
                     <c:if test="${not empty resultObject}">
                         Result:
