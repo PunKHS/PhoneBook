@@ -21,7 +21,7 @@ public class ORMController {
     public ModelAndView queryFindAllEmployee() {
         System.out.println("ORMController queryFindAllEmployee is called");
         List<Employee> Employees = ormService.queryFindAllEmployee();
-        return new ModelAndView("index", "resultObject", Employees);
+        return new ModelAndView("/index", "resultObject", Employees);
     }
 
     @RequestMapping(value = "/queryFindByIdEmployee/{id}", method = RequestMethod.GET)
