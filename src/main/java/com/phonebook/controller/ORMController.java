@@ -17,11 +17,11 @@ public class ORMController {
     @Autowired
     private ORMService ormService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView queryFindAllEmployee() {
         System.out.println("ORMController queryFindAllEmployee is called");
         List<Employee> Employees = ormService.queryFindAllEmployee();
-        return new ModelAndView("/index", "resultObject", Employees);
+        return new ModelAndView("index", "resultObject", Employees);
     }
 
     @RequestMapping(value = "/queryFindByIdEmployee/{id}", method = RequestMethod.GET)

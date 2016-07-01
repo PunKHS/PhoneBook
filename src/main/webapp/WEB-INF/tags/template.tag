@@ -19,7 +19,7 @@
     <link href="${startertemplate}" rel="stylesheet" />
 
     <!-- Custom Fonts -->
-    <spring:url value="/resources/css/font-awesome.min.css" var="fontawesome"/>
+    <spring:url value="/resources/font-awesome/css/font-awesome.min.css" var="fontawesome"/>
     <link href="${fontawesome}" rel="stylesheet" />
 
     <!-- jQuery -->

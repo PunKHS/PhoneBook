@@ -17,7 +17,6 @@
     <jsp:attribute name="title">Index</jsp:attribute>
 
     <jsp:body>
-        <c:url value="/" var="queryFindAllEmployee" />
 
         <!-- Page Content -->
         <div class="container">
@@ -52,6 +51,7 @@
                     </table>
 
 
+                    <c:url value="/" var="queryFindAllEmployee"/>
                     <a href="${queryFindAllEmployee}" class="list-group-item">Find All Users</a>
                     <c:if test="${not empty resultObject}">
                         Result:
@@ -65,6 +65,16 @@
                             <p>${resultObject}</p>
                         </c:if>
                     </c:if>
+
+                        <%--<table>--%>
+
+                        <%--<c:forEach items="${resultObject}" var="result">--%>
+                        <%--<tr>--%>
+                        <%--<td><c:out value="${result.id}" /></td>--%>
+                        <%--</tr>--%>
+                        <%--</c:forEach>--%>
+
+                        <%--</table>--%>
 
 
                 </div>

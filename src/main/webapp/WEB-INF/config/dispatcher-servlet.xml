@@ -15,6 +15,7 @@
 
     <!-- context:component-scan This tag will scan @Component, @Repository, @Service, @Controller
          and also resolves @Autowired and @Qualifier -->
+    <!--<context:component-scan base-package="com.phonebook.controller, com.phonebook.service" />-->
     <context:component-scan base-package="com.phonebook" />
 
     <!-- activate @Transactional JPA annotation -->
@@ -65,7 +66,7 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
         <!--<property name="order" value="1" />-->
-        <property name="prefix" value="/WEB-INF/view/" />
+        <property name="prefix" value="/WEB-INF/view" />
         <property name="suffix" value=".jsp" />
     </bean>
 
