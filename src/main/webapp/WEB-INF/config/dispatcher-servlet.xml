@@ -15,7 +15,7 @@
 
     <!-- context:component-scan This tag will scan @Component, @Repository, @Service, @Controller
          and also resolves @Autowired and @Qualifier -->
-    <context:component-scan base-package="com.phonebook.controller, com.phonebook.service"/>
+    <context:component-scan base-package="com.phonebook"/>
 
     <!-- mvc:annotation-driven configures Spring MVC annotations
         Support for validating @Controller inputs with @Valid, if a JSR-303 Provider is present on the classpath.

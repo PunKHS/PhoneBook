@@ -1,4 +1,4 @@
-package com.phonebook.controller;
+package com.phonebook.exception;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
