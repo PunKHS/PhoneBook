@@ -11,6 +11,7 @@
 <spring:message code="rightMenu.structure" var="rightMenuStructure"/>
 <spring:message code="rightMenu.profession" var="rightMenuProfession"/>
 <spring:message code="rightMenu.phone" var="rightMenuPhone"/>
+<c:url value="/index" var="queryFindAllEmployee"/>
 
 <page:template>
 
@@ -20,7 +21,6 @@
 
         <!-- Page Content -->
         <div class="container">
-
             <div class="row">
 
                 <!-- Left menu -->
@@ -42,6 +42,17 @@
                         </tr>
                         </thead>
                         <tbody>
+
+                        <c:forEach items="${resultObject}" var="result">
+                            <tr>
+                                <td class="text-left"><c:out value="${result.name}"/></td>
+                                <td class="text-left"><c:forEach items="${result.departments}" var="dep">${dep.name}</c:forEach></td>
+                                <td class="text-left"><c:forEach items="${result.profession}" var="prof">${prof.name}</c:forEach></td>
+                                <%--<td><c:out value=""/></td>--%>
+                                <td><c:out value=""/></td>
+                            </tr>
+                        </c:forEach>
+
                         <tr class="spinner">
                             <td colspan="4">
                                 <span class="icon-spinner3"></span>
@@ -49,39 +60,11 @@
                         </tr>
                         </tbody>
                     </table>
-
-
-                    <c:url value="/index" var="queryFindAllEmployee"/>
                     <a href="${queryFindAllEmployee}" class="list-group-item">Find All Users</a>
-                    <c:if test="${not empty resultObject}">
-                        Result:
-                        <c:if test="${resultObject == 'true'}">
-                            <font color="green"><b>${resultObject}</b></font>
-                        </c:if>
-                        <c:if test="${resultObject == 'false'}">
-                            <font color="red"><b>${resultObject}</b></font>
-                        </c:if>
-                        <c:if test="${resultObject !='true' and resultObject != 'false'}">
-                            <p>${resultObject}</p>
-                        </c:if>
-                    </c:if>
-
-                        <%--<table>--%>
-
-                        <%--<c:forEach items="${resultObject}" var="result">--%>
-                        <%--<tr>--%>
-                        <%--<td><c:out value="${result.id}" /></td>--%>
-                        <%--</tr>--%>
-                        <%--</c:forEach>--%>
-
-                        <%--</table>--%>
-
-
                 </div>
                 <!-- /.Page body -->
 
             </div>
-
         </div>
         <!-- /.container -->
 

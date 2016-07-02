@@ -53,6 +53,10 @@
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">false</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!-- encoding options -->
+                <prop key="hibernate.connection.useUnicode">true</prop>
+                <prop key="hibernate.connection.CharSet">utf8</prop>
+                <prop key="hibernate.connection.characterEncoding">utf8</prop>
             </props>
         </property>
     </bean>
