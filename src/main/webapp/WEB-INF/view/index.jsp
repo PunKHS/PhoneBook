@@ -24,7 +24,7 @@
             <div class="row">
 
                 <!-- Left menu -->
-                <div class="col-md-3 text-center">
+                <div class="hidden-xs hidden-sm col-md-3 text-center">
                     <p class="lead">${leftMenuHeader}</p>
                 </div>
                 <!-- /.Left menu -->
