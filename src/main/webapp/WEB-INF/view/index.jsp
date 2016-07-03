@@ -30,7 +30,7 @@
                 <!-- /.Left menu -->
 
                 <!-- Page body -->
-                <div class="col-md-9 text-center">
+                <div class="col-xs-12 col-sm-12 col-md-9 text-center">
                     <p class="lead">${rightMenuHeader}</p>
                     <table class="table table-hover collaborator-table" style="width:100%">
                         <thead>
