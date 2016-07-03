@@ -1,10 +1,6 @@
 package com.phonebook.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
-import javax.validation.constraints.Size;
-import java.util.Set;
 
 @Entity
 @Table(name = "EMPLOYEE")
@@ -13,56 +9,49 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    private Integer id;
 
-    @NotEmpty
-    @Size(min = 10, max = 200)
-    @Column(name = "NAME")
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "DEPARTMENT_ID")
+    private Department department;
 
-    @ManyToMany
-    @JoinTable(name = "LNK",
-            joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "DEPARTMENT_ID")
-    )
-    private Set<Department> departments;
+    @ManyToOne
+    @JoinColumn(name = "PERSON_ID")
+    private Person person;
 
-    @ManyToMany
-    @JoinTable(name = "LNK",
-            joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "PROFESSION_ID")
-    )
-    private Set<Profession> profession;
+    @ManyToOne
+    @JoinColumn(name = "PROFESSION_ID")
+    private Profession profession;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
-    public Set<Department> getDepartments() {
-        return departments;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setDepartments(Set<Department> departments) {
-        this.departments = departments;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
-    public Set<Profession> getProfession() {
+    public Profession getProfession() {
         return profession;
     }
 
-    public void setProfession(Set<Profession> profession) {
+    public void setProfession(Profession profession) {
         this.profession = profession;
     }
 
@@ -70,8 +59,8 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", departments=" + departments +
+                ", department=" + department +
+                ", person=" + person +
                 ", profession=" + profession +
                 '}';
     }

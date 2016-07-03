@@ -4,12 +4,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "PROFESSION")
-public class Profession {
+@Table(name = "PERSON")
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +22,7 @@ public class Profession {
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "profession", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Employee> employees;
 
     public int getId() {
@@ -50,7 +51,7 @@ public class Profession {
 
     @Override
     public String toString() {
-        return "Profession{" +
+        return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", employees=" + employees +

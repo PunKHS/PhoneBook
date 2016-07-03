@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import com.phonebook.model.Employee;
@@ -17,15 +16,16 @@ public class ORMService {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Employee> queryFindAllEmployee() {
-        System.out.println("ORMService queryfindAllEmployee is called");
-        String query = "from Employee order by name";
+    public List<Employee> findAllEmployee() {
+        System.out.println("ORMService findAllEmployee is called");
+//        String query = "from Employee order by name";
+        String query = "from Employee order by PERSON_ID";
         TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
         return typedQuery.getResultList();
     }
 
-    public Employee queryFindEmployeeById (int id) {
-        System.out.println("ORMService queryFindEmployeeById is called");
+    public Employee findEmployeeById(int id) {
+        System.out.println("ORMService findEmployeeById is called");
         return entityManager.find(Employee.class, id);
     }
 }

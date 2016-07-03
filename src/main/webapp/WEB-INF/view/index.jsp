@@ -11,7 +11,7 @@
 <spring:message code="rightMenu.structure" var="rightMenuStructure"/>
 <spring:message code="rightMenu.profession" var="rightMenuProfession"/>
 <spring:message code="rightMenu.phone" var="rightMenuPhone"/>
-<c:url value="/index" var="queryFindAllEmployee"/>
+<c:url value="/index" var="findAllEmployee"/>
 
 <page:template>
 
@@ -32,6 +32,7 @@
                 <!-- Page body -->
                 <div class="col-xs-12 col-sm-12 col-md-9 text-center">
                     <p class="lead">${rightMenuHeader}</p>
+                    <a href="${findAllEmployee}" class="list-group-item">Find All Employee</a>
                     <table class="table table-hover collaborator-table" style="width:100%">
                         <thead>
                         <tr>
@@ -45,10 +46,9 @@
 
                         <c:forEach items="${resultObject}" var="result">
                             <tr>
-                                <td class="text-left"><c:out value="${result.name}"/></td>
-                                <td class="text-left"><c:forEach items="${result.departments}" var="dep">${dep.name}</c:forEach></td>
-                                <td class="text-left"><c:forEach items="${result.profession}" var="prof">${prof.name}</c:forEach></td>
-                                <%--<td><c:out value=""/></td>--%>
+                                <td class="text-left"><c:out value="${result.person.name}"/></td>
+                                <td class="text-left"><c:out value="${result.department.name}"/></td>
+                                <td class="text-left"><c:out value="${result.profession.name}"/></td>
                                 <td><c:out value=""/></td>
                             </tr>
                         </c:forEach>
@@ -60,7 +60,6 @@
                         </tr>
                         </tbody>
                     </table>
-                    <a href="${queryFindAllEmployee}" class="list-group-item">Find All Users</a>
                 </div>
                 <!-- /.Page body -->
 

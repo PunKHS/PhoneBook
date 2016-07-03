@@ -4,6 +4,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,7 +27,7 @@ public class Department {
     @Column(name = "HEAD")
     private Long head;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "departments")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Employee> employees;
 
     public int getId() {

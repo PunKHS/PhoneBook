@@ -1,4 +1,0 @@
-select e.FIO, p.NAME, d.NAME from EMPLOYEES e
-inner join LNK l on l.EMPLOYEE_ID = e.ID
-inner join PROFESSION p on p.ID = l.PROFESSION_ID
-inner join DEPARTMENT d on d.ID = l.DEPARTMENT_ID
