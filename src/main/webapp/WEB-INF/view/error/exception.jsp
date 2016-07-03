@@ -33,7 +33,7 @@
 
                 <div class="col-lg-12">
                     <p>При выполнении операции произошла ошибка:</p>
-                    <b>${exceptionMsg.toString()}</b>
+                    <b>${exceptionMsg.toString()}</b>   
                     <p><br>Стек ошибки:</p>
                     <div class="pre-scrollable">
                         <p><c:forEach items="${exceptionMsg.getStackTrace()}" var="dep">${dep.toString()}<br></c:forEach></p>

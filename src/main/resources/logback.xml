@@ -9,13 +9,15 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
 
     <!-- To enable JMX Management -->
     <jmxConfigurator/>
+
     <!--Write logs in this file -->
-    <!--<property name="LOG_HOME" value="c:/springmvc-angularjs-html5/logs"/>-->
     <property name="LOG_HOME" value="C:/logs"/>
 
+    <!-- Console Logging -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%-5level %logger{0} - %msg%n</pattern>
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss} - %-5level %logger{0} - %msg%n</pattern>-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -23,18 +25,29 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
     <appender name="file" class="ch.qos.logback.core.FileAppender">
         <file>${LOG_HOME}/error.log</file>
         <encoder>
-            <pattern>%-5level %logger{0} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %-5level %logger{0} - %msg%n</pattern>
         </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Rollover daily (change everyday)-->
+            <fileNamePattern>${DEV_HOME}/archived/error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
     </appender>
 
-
+    <!-- Hibernate Logging -->
     <!--<logger name="org.hibernate" level="debug"/> -->
-    <!-- Uncomment and add your logger here:
-    <logger name="org.springframework.samples.service.service" level="debug"/> -->
+    <!--<logger name="org.hibernate.transaction.JDBCTransaction" level="ERROR"/>-->
+    <!--<logger name="org.hibernate.jdbc.ConnectionManager" level="ERROR"/>-->
+    <!--<logger name="org.springframework.orm.jpa.JpaTransactionManager" level="ERROR"/>-->
 
-    <root level="error">
-        <!-- uncomment file-->
-        <!--If you want to write to file - uncomment it-->
+    <!-- Spring Logging -->
+    <!--<logger name="org.springframework.samples.service.service" level="ERROR"/>-->
+
+    <!-- Output options -->
+    <root level="ERROR">
         <appender-ref ref="file"/>
         <appender-ref ref="console"/>
     </root>
