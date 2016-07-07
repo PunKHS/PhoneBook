@@ -36,6 +36,10 @@
         <hibernate-validator.version>5.1.0.Final</hibernate-validator.version>
         <!--Spring Data-->
         <spring-framework.data.version>1.9.1.RELEASE</spring-framework.data.version>
+        <!--Java Mail-->
+        <javax.mail.version>1.4.7</javax.mail.version>
+        <!--Velocity for Mail-->
+        <velocity.version>1.7</velocity.version>
     </properties>
 
     <dependencies>
@@ -162,6 +166,27 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring-framework.data.version}</version>
+        </dependency>
+
+        <!--Contains org.springframework.mail.javamail-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Spring MVC Mail Related Dependency -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${javax.mail.version}</version>
+        </dependency>
+
+        <!-- Velocity for mail -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>${velocity.version}</version>
         </dependency>
 
     </dependencies>
