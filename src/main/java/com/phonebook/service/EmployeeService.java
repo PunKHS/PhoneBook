@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional //need to update\delete queries. Don't forget <tx:annotation-driven/>
-public class ORMService {
+public class EmployeeService {
     @PersistenceContext
     private EntityManager entityManager;
 

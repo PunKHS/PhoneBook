@@ -1,7 +1,7 @@
 package com.phonebook.controller;
 
 import com.phonebook.model.Employee;
-import com.phonebook.service.ORMService;
+import com.phonebook.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,15 +11,15 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class ORMController {
+public class EmployeeController {
     
     @Autowired
-    private ORMService ormService;
+    private EmployeeService employeeService;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView findAllEmployee() {
         System.out.println("ORMController findAllEmployee is called");
-        List<Employee> Employees = ormService.findAllEmployee();
+        List<Employee> Employees = employeeService.findAllEmployee();
         return new ModelAndView("index", "resultObject", Employees);
     }
 

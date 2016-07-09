@@ -1,5 +1,7 @@
 package com.phonebook.model;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,6 +24,16 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "PROFESSION_ID")
     private Profession profession;
+
+    @Email
+    @Column(name = "EMAIL")
+    private String email;
+
+    @Column(name = "PHONE")
+    private String phone;
+
+    @Column(name = "MOBILE_PHONE")
+    private String mobilePhone;
 
     public Integer getId() {
         return id;
@@ -55,6 +67,30 @@ public class Employee {
         this.profession = profession;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -62,6 +98,9 @@ public class Employee {
                 ", department=" + department +
                 ", person=" + person +
                 ", profession=" + profession +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", mobilePhone='" + mobilePhone + '\'' +
                 '}';
     }
 }
