@@ -14,7 +14,7 @@ public class Profession {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    private Long id;
 
     @NotEmpty
     @Size(min = 10, max = 200)
@@ -24,11 +24,11 @@ public class Profession {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "profession", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Employee> employees;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

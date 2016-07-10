@@ -4,9 +4,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,7 +13,7 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    private Long id;
 
     @NotEmpty
     @Size(min = 10, max = 200)
@@ -30,11 +27,11 @@ public class Department {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Employee> employees;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

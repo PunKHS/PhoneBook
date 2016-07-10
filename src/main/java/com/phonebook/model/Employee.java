@@ -11,7 +11,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "DEPARTMENT_ID")
@@ -35,11 +35,11 @@ public class Employee {
     @Column(name = "MOBILE_PHONE")
     private String mobilePhone;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

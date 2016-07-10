@@ -18,8 +18,7 @@ public class EmployeeService {
 
     public List<Employee> findAllEmployee() {
         System.out.println("ORMService findAllEmployee is called");
-//        String query = "from Employee order by name";
-        String query = "from Employee order by PERSON_ID";
+        String query = "from Employee order by person.name";
         TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
         return typedQuery.getResultList();
     }
