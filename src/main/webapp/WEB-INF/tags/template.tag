@@ -55,10 +55,11 @@
             </ul>
             <%-- Search Box --%>
             <spring:message code="navMenu.searchText" var="navMenuSearchText"/>
-            <form class="navbar-form">
+            <%--<form class="navbar-form">--%>
+            <form class="navbar-form" action="/${searchText}" path="searchText" method="get">
                 <div class="form-group" style="display:inline;">
                     <div class="input-group" style="display:table;">
-                        <input class="form-control" placeholder="${navMenuSearchText}" autocomplete="off" autofocus="autofocus" type="text">
+                        <input class="form-control" name="searchText" placeholder="${navMenuSearchText}" autocomplete="off" autofocus="autofocus" type="text">
                         <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
                     </div>
                 </div>

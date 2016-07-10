@@ -17,14 +17,16 @@ public class EmployeeService {
     private EntityManager entityManager;
 
     public List<Employee> findAllEmployee() {
-        System.out.println("ORMService findAllEmployee is called");
+        System.out.println("EmployeeService findAllEmployee is called");
         String query = "from Employee order by person.name";
         TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
         return typedQuery.getResultList();
     }
 
-    public Employee findEmployeeById(int id) {
-        System.out.println("ORMService findEmployeeById is called");
-        return entityManager.find(Employee.class, id);
+    public List<Employee> searchEmployee(String searchText) {
+        System.out.println("EmployeeService searchEmployee is called");
+        String query = "from Employee where person.name like %" + searchText + "% order by person.name";
+        TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
+        return typedQuery.getResultList();
     }
 }
