@@ -10,6 +10,7 @@
 <spring:message code="rightMenu.fio" var="rightMenuFio"/>
 <spring:message code="rightMenu.structure" var="rightMenuStructure"/>
 <spring:message code="rightMenu.profession" var="rightMenuProfession"/>
+<%--<spring:message code="rightMenu.email" var="rightMenuEmail"/>--%>
 <spring:message code="rightMenu.phone" var="rightMenuPhone"/>
 <c:url value="/index" var="findAllEmployee"/>
 
@@ -38,7 +39,8 @@
                         <tr>
                             <th data-sort="fio">${rightMenuFio}</th>
                             <th data-sort="structure">${rightMenuStructure}</th>
-                            <th data-sort="post">${rightMenuProfession}</th>
+                            <th data-sort="profession">${rightMenuProfession}</th>
+                                <%--<th data-sort="email">${rightMenuEmail}</th>--%>
                             <th data-sort="phone" class="text-right">${rightMenuPhone}</th>
                         </tr>
                         </thead>
@@ -49,6 +51,9 @@
                                 <td class="text-left"><c:out value="${result.person.name}"/></td>
                                 <td class="text-left"><c:out value="${result.department.name}"/></td>
                                 <td class="text-left"><c:out value="${result.profession.name}"/></td>
+                                    <%--<td class="text-left"><c:out value="${result.email}"/></td>--%>
+                                    <%--<th class="text-left"><a href="mailto:${result.email}">${result.email}</a></th>--%>
+                                <td class="text-left"><c:out value="${result.phone}"/></td>
                                 <td><c:out value=""/></td>
                             </tr>
                         </c:forEach>
