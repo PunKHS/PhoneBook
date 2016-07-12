@@ -37,14 +37,14 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
         </rollingPolicy>
     </appender>
 
-    <!-- Hibernate Logging -->
-    <!--<logger name="org.hibernate" level="debug"/> -->
-    <!--<logger name="org.hibernate.transaction.JDBCTransaction" level="ERROR"/>-->
-    <!--<logger name="org.hibernate.jdbc.ConnectionManager" level="ERROR"/>-->
-    <!--<logger name="org.springframework.orm.jpa.JpaTransactionManager" level="ERROR"/>-->
+    <!--Hibernate Logging-->
+    <!--<logger name="org.hibernate" level="DEBUG"/>-->
+    <!--<logger name="org.hibernate.transaction.JDBCTransaction" level="DEBUG"/>-->
+    <!--<logger name="org.hibernate.jdbc.ConnectionManager" level="DEBUG"/>-->
+    <!--<logger name="org.springframework.orm.jpa.JpaTransactionManager" level="DEBUG"/>-->
 
     <!-- Spring Logging -->
-    <!--<logger name="org.springframework.samples.service.service" level="ERROR"/>-->
+    <!--<logger name="org.springframework.samples.service.service" level="DEBUG"/>-->
 
     <!-- Output options -->
     <root level="ERROR">

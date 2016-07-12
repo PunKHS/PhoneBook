@@ -12,7 +12,7 @@
 <spring:message code="rightMenu.profession" var="rightMenuProfession"/>
 <%--<spring:message code="rightMenu.email" var="rightMenuEmail"/>--%>
 <spring:message code="rightMenu.phone" var="rightMenuPhone"/>
-<%--<c:url value="/index" var="findAllEmployee"/>--%>
+<c:url value="/index" var="findAllEmployee"/>
 
 <page:template>
 
@@ -33,7 +33,7 @@
                 <!-- Page body -->
                 <div class="col-xs-12 col-sm-12 col-md-9 text-center">
                     <p class="lead">${rightMenuHeader}</p>
-                    <%--<a href="${findAllEmployee}" class="list-group-item">Find All Employee</a>--%>
+                    <a href="${findAllEmployee}" class="list-group-item">Find All Employee</a>
                     <table class="table table-hover collaborator-table" style="width:100%">
                         <thead>
                         <tr>

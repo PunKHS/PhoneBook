@@ -19,7 +19,7 @@
     <link href="${startertemplate}" rel="stylesheet" />
 
     <!-- Custom Fonts -->
-    <spring:url value="/resources/css/font-awesome.min.css" var="fontawesome"/>
+    <spring:url value="/resources/font-awesome/css/font-awesome.min.css" var="fontawesome"/>
     <link href="${fontawesome}" rel="stylesheet" />
 
     <!-- jQuery -->
@@ -56,7 +56,9 @@
             <%-- Search Box --%>
             <spring:message code="navMenu.searchText" var="navMenuSearchText"/>
             <%--<form class="navbar-form">--%>
-            <form class="navbar-form" action="/${searchText}" path="searchText" method="get">
+            <c:url value="/search/{searchText}" var="searchText"/>
+            <%--<form class="navbar-form" action="${searchText}" method="post">--%>
+            <form class="navbar-form" method="post">
                 <div class="form-group" style="display:inline;">
                     <div class="input-group" style="display:table;">
                         <input class="form-control" name="searchText" placeholder="${navMenuSearchText}" autocomplete="off" autofocus="autofocus" type="text">

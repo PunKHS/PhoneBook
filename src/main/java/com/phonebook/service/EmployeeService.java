@@ -17,7 +17,7 @@ public class EmployeeService {
     private EntityManager entityManager;
 
     public List<Employee> findAllEmployee() {
-        System.out.println("EmployeeService findAllEmployee is called");
+//        System.out.println("EmployeeService findAllEmployee is called");
         String query = "from Employee order by person.name";
         TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
         return typedQuery.getResultList();
@@ -25,8 +25,10 @@ public class EmployeeService {
 
     public List<Employee> searchEmployee(String searchText) {
         System.out.println("EmployeeService searchEmployee is called");
-        String query = "from Employee where person.name like %" + searchText + "% order by person.name";
+//        String query = "from Employee where person.name like '%" + searchText + "%' order by person.name";
+        String query = "from Employee where profession.name = :pattern";
         TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
+        typedQuery.setParameter("pattern", searchText);
         return typedQuery.getResultList();
     }
 }
