@@ -16,7 +16,8 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+//    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView findAllEmployee() {
 //        System.out.println("EmployeeController findAllEmployee is called");
         List<Employee> Employees = employeeService.findAllEmployee();
