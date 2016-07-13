@@ -26,9 +26,9 @@ public class EmployeeService {
     public List<Employee> searchEmployee(String searchText) {
         System.out.println("EmployeeService searchEmployee is called");
 //        String query = "from Employee where person.name like '%" + searchText + "%' order by person.name";
-        String query = "from Employee where profession.name = :pattern";
+        String query = "from Employee where lower(person.name) like lower(trim(:pattern))";
         TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
-        typedQuery.setParameter("pattern", searchText);
+        typedQuery.setParameter("pattern", "%" + searchText + "%");
         return typedQuery.getResultList();
     }
 }
