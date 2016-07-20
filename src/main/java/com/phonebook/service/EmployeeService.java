@@ -31,4 +31,11 @@ public class EmployeeService {
         typedQuery.setParameter("pattern", "%" + searchText + "%");
         return typedQuery.getResultList();
     }
+
+    public List<Employee> test() {
+//        System.out.println("EmployeeService findAllEmployee is called");
+        String query = "from Employee order by person.name";
+        TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
+        return typedQuery.getResultList();
+    }
 }
