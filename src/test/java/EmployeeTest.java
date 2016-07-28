@@ -1,5 +1,5 @@
 import com.phonebook.model.Employee;
-import com.phonebook.service.EmployeeService;
+import com.phonebook.service.EmployeeServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,11 +18,11 @@ import java.util.List;
 public class EmployeeTest {
 
     @Autowired
-    private EmployeeService employeeService;
+    private EmployeeServiceImpl employeeServiceImpl;
 
     @Test
     public void queryAllUsers() {
-        List<Employee> employees = employeeService.findAllEmployee();
+        List<Employee> employees = employeeServiceImpl.findAllEmployee();
         Assert.assertNotNull(employees);
     }
 }

@@ -1,4 +1,4 @@
-package com.phonebook.service;
+package com.phonebook.dao;
 
 import com.phonebook.model.Employee;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * Created by PunKHS on 28.07.16.
  */
 
-public interface EmployeeService {
+public interface EmployeeDao {
 
     public void addEmployee(Employee employee);
 
@@ -18,5 +18,5 @@ public interface EmployeeService {
 
     public Employee getEmployeeById(int id);
 
-    public List<Employee> findAllEmployee();
+    public List<Employee> listEmployee();
 }
