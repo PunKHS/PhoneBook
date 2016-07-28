@@ -82,14 +82,19 @@
         <property name="resourceLoaderPath" value="/WEB-INF/email-templates/"/>
     </bean>
 
-    <!-- Automatic Transaction Participation-->
+    <!-- Automatic Transaction Participation -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
 
+    <!-- Entity Manager -->
+    <bean id="entityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
     <!--BookDao and BookService beans-->
     <bean id="employeeDao" class="com.phonebook.dao.EmployeeDaoImpl">
-        <property name="entityManager" ref="entityManagerFactory"/>
+        <property name="entityManager" ref="entityManager"/>
     </bean>
 
     <bean id="employeeService" class="com.phonebook.service.EmployeeServiceImpl">
