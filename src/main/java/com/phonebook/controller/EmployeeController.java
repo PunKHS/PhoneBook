@@ -1,8 +1,9 @@
 package com.phonebook.controller;
 
 import com.phonebook.model.Employee;
-import com.phonebook.service.EmployeeServiceImpl;
+import com.phonebook.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,8 +13,15 @@ import org.slf4j.Logger;
 @Controller
 public class EmployeeController {
 
-    @Autowired
-    private EmployeeServiceImpl employeeServiceImpl;
+//    @Autowired
+//    private EmployeeService employeeService;
+
+    @Autowired(required = true)
+    @Qualifier(value = "employeeService")
+    private EmployeeService employeeService;
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     private final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeController.class);
 
@@ -21,21 +29,21 @@ public class EmployeeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView findAllEmployee() {
         logger.info("EmployeeController findAllEmployee is called");
-        List<Employee> Employees = employeeServiceImpl.findAllEmployee();
+        List<Employee> Employees = employeeService.findAllEmployee();
         return new ModelAndView("index", "resultObject", Employees);
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ModelAndView searchEmployee(@RequestParam("searchText") String text) {
         logger.info("EmployeeController searchEmployee is called");
-        List<Employee> Employees = employeeServiceImpl.searchEmployee(text);
+        List<Employee> Employees = employeeService.searchEmployee(text);
         return new ModelAndView("index", "resultObject", Employees);
     }
 
-    @RequestMapping(value = "/employee", method = RequestMethod.GET)
-    public ModelAndView test() {
-        logger.info("EmployeeController findAllEmployee is called");
-        List<Employee> Employees = employeeServiceImpl.findAllEmployee();
-        return new ModelAndView("index", "resultObject", Employees);
-    }
+//    @RequestMapping(value = "/employee", method = RequestMethod.GET)
+//    public ModelAndView test() {
+//        logger.info("EmployeeController findAllEmployee is called");
+//        List<Employee> Employees = employeeService.findAllEmployee();
+//        return new ModelAndView("index", "resultObject", Employees);
+//    }
 }

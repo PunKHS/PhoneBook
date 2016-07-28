@@ -4,12 +4,7 @@ import com.phonebook.model.Employee;
 
 import java.util.List;
 
-/**
- * Created by PunKHS on 28.07.16.
- */
-
 public interface EmployeeDao {
-
     public void addEmployee(Employee employee);
 
     public void updateEmployee(Employee employee);
@@ -19,4 +14,6 @@ public interface EmployeeDao {
     public Employee getEmployeeById(int id);
 
     public List<Employee> listEmployee();
+
+    public List<Employee> listEmployeeByFio(String searchText);
 }

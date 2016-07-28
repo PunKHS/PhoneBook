@@ -1,7 +1,6 @@
 package com.phonebook.service;
 
 import com.phonebook.model.Employee;
-
 import java.util.List;
 
 /**
@@ -19,4 +18,6 @@ public interface EmployeeService {
     public Employee getEmployeeById(int id);
 
     public List<Employee> findAllEmployee();
+
+    public List<Employee> searchEmployee(String searchText);
 }

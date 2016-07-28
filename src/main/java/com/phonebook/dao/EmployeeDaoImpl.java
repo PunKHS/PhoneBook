@@ -1,77 +1,78 @@
 package com.phonebook.dao;
 
 import com.phonebook.model.Employee;
-
 import java.util.List;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
- * Created by PunKHS on 28.07.16.
+ * Created by PunKHS on 27.07.2016.
  */
 
+@Repository
+//@Transactional //need to update\delete queries. Don't forget <tx:annotation-driven/>
 public class EmployeeDaoImpl implements EmployeeDao {
 
-    private static final Logger logger = LoggerFactory.getLogger(EmployeeDaoImpl.class);
-
-    private SessionFactory sessionFactory;
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+private static final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeDaoImpl.class);
 
     @PersistenceContext
     private EntityManager entityManager;
 
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     @Override
     public void addEmployee(Employee employee) {
-        Session session = this.sessionFactory.getCurrentSession();
         entityManager.persist(employee);
-        logger.info("Employee successfully saved. Employee details: " + employee);
+        logger.info("Employee adding... " + employee);
     }
 
     @Override
     public void updateEmployee(Employee employee) {
-        Session session = this.sessionFactory.getCurrentSession();
-        logger.info("Employee successfully update. Employee details: " + employee);
+        entityManager.merge(employee);
+        logger.info("Employee was update... " + employee);
     }
 
     @Override
     public void removeEmployee(int id) {
-//        Session session = this.sessionFactory.getCurrentSession();
-//        Employee employee = (Employee) session.load(Employee.class, new Integer(id));
-        Employee employee = (Employee) entityManager.load(Employee.class, new Integer(id));
-
-        if (employee != null) {
-//            session.delete(employee);
+        Employee employee = (Employee) entityManager.find(Employee.class, id);
+        if(employee != null){
             entityManager.remove(employee);
         }
-        logger.info("Employee successfully removed. Employee details: " + employee);
+        logger.info("Employee was successfully deleted... " + employee);
     }
 
     @Override
     public Employee getEmployeeById(int id) {
-        Session session = this.sessionFactory.getCurrentSession();
-        Employee employee = (Employee) session.load(Employee.class, new Integer(id));
-        logger.info("Employee successfully loaded. Employee details: " + employee);
+        Employee employee = (Employee) entityManager.find(Employee.class, id);
+        logger.info("Employee was successfully find... " + employee);
         return employee;
     }
 
     @Override
-    @SuppressWarnings("unchecked")
+//    @SuppressWarnings("unchecked")
     public List<Employee> listEmployee() {
-        Session session = this.sessionFactory.getCurrentSession();
-        List<Employee> employeeList = session.createQuery("from Employee").list();
+        String query = "from Employee order by person.name";
+        TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
+        logger.info("Employee list was successfully find");
+        return typedQuery.getResultList();
+    }
 
-        for (Employee employee : employeeList) {
-            logger.info("Employee list: " + employee);
-        }
-        return employeeList;
+    @Override
+//    @SuppressWarnings("unchecked")
+    public List<Employee> listEmployeeByFio(String searchText) {
+//        String query = "from Employee where person.name like '%" + searchText + "%' order by person.name";
+        String query = "from Employee where lower(person.name) like lower(trim(:pattern))";
+        TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
+        typedQuery.setParameter("pattern", "%" + searchText + "%");
+        logger.info("Employee search ");
+        return typedQuery.getResultList();
     }
 }

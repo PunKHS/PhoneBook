@@ -87,4 +87,13 @@
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
 
+    <!--BookDao and BookService beans-->
+    <bean id="employeeDao" class="com.phonebook.dao.EmployeeDaoImpl">
+        <property name="entityManager" ref="entityManagerFactory"/>
+    </bean>
+
+    <bean id="employeeService" class="com.phonebook.service.EmployeeServiceImpl">
+        <property name="employeeDao" ref="employeeDao"/>
+    </bean>
+
 </beans>
