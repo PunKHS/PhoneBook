@@ -31,7 +31,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public void addEmployee(Employee employee) {
-//        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.getCurrentSession();
         entityManager.persist(employee);
         logger.info("Employee successfully saved. Employee details: " + employee);
     }
