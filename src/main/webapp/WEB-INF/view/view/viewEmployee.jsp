@@ -14,7 +14,7 @@
 <spring:message code="labelEmployee.new" var="labelOrdersNew"/>
 <spring:message code="labelEmployee.update" var="labelOrdersUpdate"/>
 
-<c:url value="/employee" var="employee"/>
+<%--<c:url value="/employee" var="employee"/>--%>
 
 <!-- Проверка редактирование/обновление -->
 <%--<spring:eval expression="employee.id==null?labelEmployeeNew:labelEmployeeUpdate" var="formTitle"/>--%>
@@ -33,11 +33,27 @@
 
                 <!-- Page body -->
                 <div>
-                    <p class="lead">${editEmployeeHeader}</p>
-                    <form:form modelAttribute="employee" id="employeeUpdateForm" method="POST">
-                        <form:label path="employee.person">${editEmployeeSurname}</form:label>
-                        <form:input path="employee.person"/>
-                    </form:form>
+                    <%--<p class="lead">${editEmployeeHeader}</p>--%>
+                    <%--<form:form modelAttribute="employee" id="employeeUpdateForm" method="POST">--%>
+                        <%--<form:label path="employee.person">${editEmployeeSurname}</form:label>--%>
+                        <%--<form:input path="employee.person"/>--%>
+                    <%--</form:form>--%>
+
+                        <table class="tg">
+                            <tr>
+                                <th width="80">ID</th>
+                                <th width="120">Title</th>
+                                <th width="120">Author</th>
+                                <th width="120">Price</th>
+                            </tr>
+                            <tr>
+                                <td>${employee.person.name}</td>
+                                <td>${employee.department.name}</td>
+                                <td>${employee.profession.name}</td>
+                                <td>${employee.phone}</td>
+                            </tr>
+                        </table>
+
                 </div>
                 <!-- /.Page body -->
 

@@ -33,7 +33,7 @@
                 <!-- Page body -->
                 <div class="col-xs-12 col-sm-12 col-md-9 text-center">
                     <p class="lead">${rightMenuHeader}</p>
-                    <%--<a href="${findAllEmployee}" class="list-group-item">Find All Employee</a>--%>
+                        <%--<a href="${findAllEmployee}" class="list-group-item">Find All Employee</a>--%>
                     <table class="table table-hover collaborator-table" style="width:100%">
                         <thead>
                         <tr>
@@ -48,13 +48,15 @@
 
                         <c:forEach items="${resultObject}" var="result">
                             <tr>
-                                <td class="text-left"><c:out value="${result.person.name}"/></td>
+                                    <%--<td class="text-left"><c:out value="${result.person.name}"/></td>--%>
+                                <td class="text-left"><a href="/view/${result.id}" target="_blank">${result.person.name}</a></td>
                                 <td class="text-left"><c:out value="${result.department.name}"/></td>
                                 <td class="text-left"><c:out value="${result.profession.name}"/></td>
                                     <%--<td class="text-left"><c:out value="${result.email}"/></td>--%>
                                     <%--<th class="text-left"><a href="mailto:${result.email}">${result.email}</a></th>--%>
                                 <td class="text-left"><c:out value="${result.phone}"/></td>
                                 <td><c:out value=""/></td>
+
                             </tr>
                         </c:forEach>
 

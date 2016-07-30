@@ -41,7 +41,7 @@ private static final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeD
     }
 
     @Override
-    public void removeEmployee(int id) {
+    public void removeEmployee(long id) {
         Employee employee = (Employee) entityManager.find(Employee.class, id);
         if(employee != null){
             entityManager.remove(employee);
@@ -50,7 +50,7 @@ private static final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeD
     }
 
     @Override
-    public Employee getEmployeeById(int id) {
+    public Employee getEmployeeById(long id) {
         Employee employee = (Employee) entityManager.find(Employee.class, id);
         logger.info("Employee was successfully find... " + employee);
         return employee;

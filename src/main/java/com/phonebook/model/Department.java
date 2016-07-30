@@ -13,7 +13,7 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private Long id;
+    private long id;
 
     @NotEmpty
     @Size(min = 10, max = 200)
@@ -22,16 +22,16 @@ public class Department {
 
     @NotEmpty
     @Column(name = "HEAD")
-    private Long head;
+    private long head;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Employee> employees;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -47,7 +47,7 @@ public class Department {
         return head;
     }
 
-    public void setHead(Long head) {
+    public void setHead(long head) {
         this.head = head;
     }
 

@@ -3,10 +3,12 @@ package com.phonebook.service;
 import java.util.List;
 import com.phonebook.dao.EmployeeDao;
 import com.phonebook.model.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
+    @Autowired
     private EmployeeDao employeeDao;
 
     public void setEmployeeDao(EmployeeDao employeeDao) {
@@ -16,25 +18,25 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional
     public void addEmployee(Employee employee) {
-
+        this.employeeDao.addEmployee(employee);
     }
 
     @Override
     @Transactional
     public void updateEmployee(Employee employee) {
-
+        this.employeeDao.updateEmployee(employee);
     }
 
     @Override
     @Transactional
-    public void removeEmployee(int id) {
-
+    public void removeEmployee(long id) {
+        this.employeeDao.removeEmployee(id);
     }
 
     @Override
     @Transactional
-    public Employee getEmployeeById(int id) {
-        return null;
+    public Employee getEmployeeById(long id) {
+        return this.employeeDao.getEmployeeById(id);
     }
 
     @Override
