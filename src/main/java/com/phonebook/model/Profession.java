@@ -48,12 +48,12 @@ public class Profession {
         this.employees = employees;
     }
 
-    @Override
-    public String toString() {
-        return "Profession{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", employees=" + employees +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Profession{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", employees=" + employees +
+//                '}';
+//    }
 }

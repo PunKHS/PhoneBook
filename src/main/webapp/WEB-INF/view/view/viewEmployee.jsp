@@ -39,6 +39,7 @@
                         <%--<form:input path="employee.person"/>--%>
                     <%--</form:form>--%>
 
+                        <%--<table class="tg" items="${resultObject}" var="employee">--%>
                         <table class="tg">
                             <tr>
                                 <th width="80">ID</th>

@@ -59,13 +59,13 @@ public class Department {
         this.employees = employees;
     }
 
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", head=" + head +
-                ", employees=" + employees +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Department{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", head=" + head +
+//                ", employees=" + employees +
+//                '}';
+//    }
 }

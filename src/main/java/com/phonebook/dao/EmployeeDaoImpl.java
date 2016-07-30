@@ -3,6 +3,7 @@ package com.phonebook.dao;
 import com.phonebook.model.Employee;
 import java.util.List;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +22,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 private static final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeDaoImpl.class);
 
-    @PersistenceContext
+    @Autowired
+//    @PersistenceContext
     private EntityManager entityManager;
 
     public void setEntityManager(EntityManager entityManager) {

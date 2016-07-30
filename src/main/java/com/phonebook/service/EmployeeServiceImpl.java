@@ -4,8 +4,10 @@ import java.util.List;
 import com.phonebook.dao.EmployeeDao;
 import com.phonebook.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired

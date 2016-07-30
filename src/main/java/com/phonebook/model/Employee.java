@@ -91,16 +91,16 @@ public class Employee {
         this.mobilePhone = mobilePhone;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", department=" + department +
-                ", person=" + person +
-                ", profession=" + profession +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", mobilePhone='" + mobilePhone + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Employee{" +
+//                "id=" + id +
+//                ", department=" + department +
+//                ", person=" + person +
+//                ", profession=" + profession +
+//                ", email='" + email + '\'' +
+//                ", phone='" + phone + '\'' +
+//                ", mobilePhone='" + mobilePhone + '\'' +
+//                '}';
+//    }
 }
