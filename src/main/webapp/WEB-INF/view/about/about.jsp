@@ -5,7 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="page" tagdir="/WEB-INF/tags" %>
 
-<page:template>
+<page:templateWithSearch>
     <jsp:attribute name="title">Javastudy.ru MVC_HTML5_Angular</jsp:attribute>
 
     <jsp:body>
@@ -195,4 +195,4 @@
         <!-- /.container -->
     </jsp:body>
 
-</page:template>
+</page:templateWithSearch>

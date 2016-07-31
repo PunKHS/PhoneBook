@@ -9,7 +9,7 @@
 <spring:message code="exception.pageSmallHeader" var="exceptionPageSmallHeader"/>
 <spring:message code="exception.home" var="exceptionHome"/>
 
-<page:template>
+<page:templateWithSearch>
     <jsp:body>
         <!-- Page Content -->
         <div class="container">
@@ -48,4 +48,4 @@
         </div>
         <!-- /.container -->
     </jsp:body>
-</page:template>
+</page:templateWithSearch>

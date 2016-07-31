@@ -74,7 +74,8 @@
 
     <mvc:view-controller path="/" view-name="/index"/>
     <mvc:view-controller path="/index.html" view-name="/index"/>
-    <mvc:view-controller path="/view.html" view-name="/view/viewEmployee"/>
+    <mvc:view-controller path="/view.html" view-name="/employee/view"/>
+    <mvc:view-controller path="/edit.html" view-name="/employee/edit"/>
     <mvc:view-controller path="/about.html" view-name="/about/about"/>
 
     <!-- Static Resources Configuration (get access to static sources such as CSS and JavaScript files) -->

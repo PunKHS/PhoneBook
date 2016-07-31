@@ -5,7 +5,6 @@ import com.phonebook.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,7 +54,18 @@ public class EmployeeController {
     public ModelAndView getEmployeeById(@PathVariable("id") long id) {
         Employee employee = this.employeeService.getEmployeeById(id);
         logger.info("EmployeeController getEmployeeById is called");
-        return new ModelAndView("/view/viewEmployee", "employee", employee);
+        return new ModelAndView("employee/view", "employee", employee);
+    }
+
+    @RequestMapping(value = "/employee/add", method = RequestMethod.POST)
+    public String addBook(@ModelAttribute("employee") Employee employee){
+//        if(employee.getId() == 0){
+//            this.employeeService.addEmployee(employee);
+//        }else {
+//            this.employeeService.updateEmployee(employee);
+//        }
+        this.employeeService.addEmployee(employee);
+        return "redirect:/index";
     }
 
 //    @RequestMapping(value = "/employee/add", method = RequestMethod.POST)
