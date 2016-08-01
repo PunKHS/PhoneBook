@@ -21,8 +21,6 @@
 <spring:message code="employee.email" var="employeeEmail"/>
 <spring:message code="employee.phone" var="employeePhone"/>
 
-<spring:url value="/edit" var="editUrl"/>
-
 
 <%--<c:url value="/employee" var="employee"/>--%>
 
@@ -42,37 +40,41 @@
                 <!-- Page body -->
                 <div class="col-xs-12 col-sm-12 col-md-12">
 
-                    <p class="lead">${employeeView}</p>
+                    <p class="lead">${employeeEdit}</p>
 
-                        <table class="table table-hover">
+                    <form:form modelAttribute="employee" id="editForm" method="post">
 
-                            <tr>
-                                <td class="text-left" width="120">${employeeFio}</td>
-                                <td class="text-left">${employee.person.name}</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" width="120">${employeeStructure}</td>
-                                <td class="text-left">${employee.department.name}</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" width="120">${employeeProfession}</td>
-                                <td class="text-left">${employee.profession.name}</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" width="120">${employeeEmail}</td>
-                                <td class="text-left"><a href="mailto:${employee.email}">${employee.email}</a></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" width="120">${employeePhone}</td>
-                                <td class="text-left">${employee.phone}</td>
-                            </tr>
-                        </table>
+                    <table class="table table-hover">
 
-                        <div>
-                            <a class="btn btn-success" href="${editUrl}/${employee.id}?form">${buttonEdit}</a>
-                            <a class="btn btn-danger">${buttonDelete}</a>
-                        </div>
+                        <tr>
+                            <td class="text-left" width="120">${employeeFio}</td>
+                            <td class="text-left"><form:input path="person.name"/></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" width="120">${employeeStructure}</td>
+                            <td class="text-left"><form:input path="department.name"/></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" width="120">${employeeProfession}</td>
+                            <td class="text-left"><form:input path="profession.name"/></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" width="120">${employeeEmail}</td>
+                            <td class="text-left"><form:input path="email"/></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" width="120">${employeePhone}</td>
+                            <td class="text-left"><form:input path="phone"/></td>
+                        </tr>
+                    </table>
                 </div>
+
+                <div>
+                    <a class="btn btn-success">${buttonOk}</a>
+                    <a class="btn btn-default">${buttonCancel}</a>
+                </div>
+
+                </form:form>
                 <!-- /.Page body -->
 
             </div>

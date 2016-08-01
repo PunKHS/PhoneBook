@@ -57,15 +57,11 @@ public class EmployeeController {
         return new ModelAndView("employee/view", "employee", employee);
     }
 
-    @RequestMapping(value = "/employee/add", method = RequestMethod.POST)
-    public String addBook(@ModelAttribute("employee") Employee employee){
-//        if(employee.getId() == 0){
-//            this.employeeService.addEmployee(employee);
-//        }else {
-//            this.employeeService.updateEmployee(employee);
-//        }
-        this.employeeService.addEmployee(employee);
-        return "redirect:/index";
+    @RequestMapping(value = "/edit/{id}", params = "form", method = RequestMethod.GET)
+    public ModelAndView editForm(@PathVariable("id") long id) {
+        Employee employee = this.employeeService.getEmployeeById(id);
+        logger.info("EmployeeController getEmployeeById is called");
+        return new ModelAndView("employee/edit", "employee", employee);
     }
 
 //    @RequestMapping(value = "/employee/add", method = RequestMethod.POST)
