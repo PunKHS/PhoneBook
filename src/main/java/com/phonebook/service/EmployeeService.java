@@ -1,5 +1,6 @@
 package com.phonebook.service;
 
+import com.phonebook.model.Department;
 import com.phonebook.model.Employee;
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface EmployeeService {
     public List<Employee> findAllEmployee();
 
     public List<Employee> searchEmployee(String searchText);
+
+//    public List<Department> getAllDepartments();
 }

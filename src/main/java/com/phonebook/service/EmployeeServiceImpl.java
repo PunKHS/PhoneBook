@@ -1,7 +1,10 @@
 package com.phonebook.service;
 
 import java.util.List;
+
+import com.phonebook.dao.DepartmentDao;
 import com.phonebook.dao.EmployeeDao;
+import com.phonebook.model.Department;
 import com.phonebook.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,4 +55,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> searchEmployee(String searchText) {
         return this.employeeDao.listEmployeeByFio(searchText);
     }
+
+//    @Override
+//    @Transactional
+//    public List<Department> getAllDepartments() {
+//        return this.departmentDao.listDepartment();
+//    }
 }

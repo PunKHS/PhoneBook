@@ -92,13 +92,22 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <!--BookDao and BookService beans-->
+    <!--Employee beans-->
     <bean id="employeeDao" class="com.phonebook.dao.EmployeeDaoImpl">
         <property name="entityManager" ref="entityManager"/>
     </bean>
 
     <bean id="employeeService" class="com.phonebook.service.EmployeeServiceImpl">
         <property name="employeeDao" ref="employeeDao"/>
+    </bean>
+
+    <!--Department beans-->
+    <bean id="departmentDao" class="com.phonebook.dao.DepartmentDaoImpl">
+        <property name="entityManager" ref="entityManager"/>
+    </bean>
+
+    <bean id="departmentService" class="com.phonebook.service.DepartmentServiceImpl">
+        <property name="departmentDao" ref="departmentDao"/>
     </bean>
 
 </beans>
