@@ -23,12 +23,6 @@
 
 <spring:url value="/edit" var="editUrl"/>
 
-
-<%--<c:url value="/employee" var="employee"/>--%>
-
-<!-- Проверка редактирование/обновление -->
-<%--<spring:eval expression="employee.id==null?labelEmployeeNew:labelEmployeeUpdate" var="formTitle"/>--%>
-
 <page:templateWithoutSearch>
 
     <jsp:attribute name="title">Edit</jsp:attribute>

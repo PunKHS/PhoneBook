@@ -42,39 +42,49 @@
 
                     <p class="lead">${employeeEdit}</p>
 
-                    <form:form modelAttribute="employee" id="editForm" method="post">
+                    <%--<div id="update">--%>
+                            <%--<form:form modelAttribute="employee" id="editForm" method="post">--%>
+                        <form:form modelAttribute="employee" action="/update" method="post">
 
-                    <table class="table table-hover">
+                        <table class="table table-hover">
 
-                        <tr>
-                            <td class="text-left" width="120">${employeeFio}</td>
-                            <td class="text-left"><form:input path="person.name"/></td>
-                        </tr>
-                        <tr>
-                            <td class="text-left" width="120">${employeeStructure}</td>
-                            <td class="text-left"><form:input path="department.name"/></td>
-                        </tr>
-                        <tr>
-                            <td class="text-left" width="120">${employeeProfession}</td>
-                            <td class="text-left"><form:input path="profession.name"/></td>
-                        </tr>
-                        <tr>
-                            <td class="text-left" width="120">${employeeEmail}</td>
-                            <td class="text-left"><form:input path="email"/></td>
-                        </tr>
-                        <tr>
-                            <td class="text-left" width="120">${employeePhone}</td>
-                            <td class="text-left"><form:input path="phone"/></td>
-                        </tr>
-                    </table>
-                </div>
+                            <tr>
+                                <td class="text-left" width="120">${employeeFio}</td>
+                                <td class="text-left"><form:input path="person.name"/></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left" width="120">${employeeStructure}</td>
+                                <td>
+                                    <form:select path="department.id">
+                                        <form:options items="${department}" itemValue="id" itemLabel="name"/>
+                                    </form:select>
+                                </td>
 
-                <div>
-                    <a class="btn btn-success">${buttonOk}</a>
-                    <a class="btn btn-default">${buttonCancel}</a>
-                </div>
+                                <%--<td class="text-left"><form:input path="department.name"/></td>--%>
+                            </tr>
+                            <tr>
+                                <td class="text-left" width="120">${employeeProfession}</td>
+                                <td class="text-left"><form:input path="profession.name"/></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left" width="120">${employeeEmail}</td>
+                                <td class="text-left"><form:input path="email"/></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left" width="120">${employeePhone}</td>
+                                <td class="text-left"><form:input path="phone"/></td>
+                            </tr>
+                        </table>
+                    </div>
 
-                </form:form>
+                    <div>
+                        <button class = "btn btn-success" type = "submit">${buttonOk}</button>
+                        <a class="btn btn-default">${buttonCancel}</a>
+                    </div>
+
+                    </form:form>
+
+                <%--</div>--%>
 
                 <!-- /.Page body -->
 
