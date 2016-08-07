@@ -22,7 +22,7 @@ public class Department {
 
     @NotEmpty
     @Column(name = "HEAD")
-    private long head;
+    private Long head;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Employee> employees;
@@ -47,7 +47,7 @@ public class Department {
         return head;
     }
 
-    public void setHead(long head) {
+    public void setHead(Long head) {
         this.head = head;
     }
 

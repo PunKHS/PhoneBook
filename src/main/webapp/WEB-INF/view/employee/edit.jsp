@@ -50,7 +50,12 @@
 
                             <tr>
                                 <td class="text-left" width="120">${employeeFio}</td>
-                                <td class="text-left"><form:input path="person.name"/></td>
+                                <td>
+                                    <form:select path="department.id">
+                                        <form:options items="${person}" itemValue="id" itemLabel="name"/>
+                                    </form:select>
+                                </td>
+                                <%--<td class="text-left"><form:input path="person.name"/></td>--%>
                             </tr>
                             <tr>
                                 <td class="text-left" width="120">${employeeStructure}</td>
@@ -59,12 +64,14 @@
                                         <form:options items="${department}" itemValue="id" itemLabel="name"/>
                                     </form:select>
                                 </td>
-
-                                <%--<td class="text-left"><form:input path="department.name"/></td>--%>
                             </tr>
                             <tr>
                                 <td class="text-left" width="120">${employeeProfession}</td>
-                                <td class="text-left"><form:input path="profession.name"/></td>
+                                <td>
+                                    <form:select path="profession.id">
+                                        <form:options items="${profession}" itemValue="id" itemLabel="name"/>
+                                    </form:select>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="text-left" width="120">${employeeEmail}</td>

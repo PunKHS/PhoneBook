@@ -1,6 +1,7 @@
 package com.phonebook.dao;
 
 import com.phonebook.model.Department;
+import com.phonebook.model.Profession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
@@ -8,9 +9,9 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**
- * Created by PunKHS on 06.08.2016.
+ * Created by PunKHS on 07.08.2016.
  */
-public class DepartmentDaoImpl implements DepartmentDao {
+public class ProfessionDaoImpl implements ProfessionDao {
 
     @Autowired
     private EntityManager entityManager;
@@ -20,29 +21,29 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public void addEmployee(Department department) {
+    public void addEmployee(Profession Profession) {
 
     }
 
     @Override
-    public void updateDepartment(Department department) {
+    public void updateProfession(Profession Profession) {
 
     }
 
     @Override
-    public void removeDepartment(long id) {
+    public void removeProfession(long id) {
 
     }
 
     @Override
-    public Department getDepartmentById(long id) {
+    public Profession getProfessionById(long id) {
         return null;
     }
 
     @Override
-    public List<Department> listDepartment() {
-        String query = "from Department order by Name";
-        TypedQuery<Department> typedQuery = entityManager.createQuery(query, Department.class);
+    public List<Profession> listProfession() {
+        String query = "from Profession order by Name";
+        TypedQuery<Profession> typedQuery = entityManager.createQuery(query, Profession.class);
         return typedQuery.getResultList();
     }
 }

@@ -110,4 +110,22 @@
         <property name="departmentDao" ref="departmentDao"/>
     </bean>
 
+    <!--Profession beans-->
+    <bean id="professionDao" class="com.phonebook.dao.ProfessionDaoImpl">
+        <property name="entityManager" ref="entityManager"/>
+    </bean>
+
+    <bean id="professionService" class="com.phonebook.service.ProfessionServiceImpl">
+        <property name="professionDao" ref="professionDao"/>
+    </bean>
+
+    <!--Person beans-->
+    <bean id="personDao" class="com.phonebook.dao.PersonDaoImpl">
+        <property name="entityManager" ref="entityManager"/>
+    </bean>
+
+    <bean id="personService" class="com.phonebook.service.PersonServiceImpl">
+        <property name="personDao" ref="personDao"/>
+    </bean>
+
 </beans>
