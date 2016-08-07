@@ -21,12 +21,6 @@
 <spring:message code="employee.email" var="employeeEmail"/>
 <spring:message code="employee.phone" var="employeePhone"/>
 
-
-<%--<c:url value="/employee" var="employee"/>--%>
-
-<!-- Проверка редактирование/обновление -->
-<%--<spring:eval expression="employee.id==null?labelEmployeeNew:labelEmployeeUpdate" var="formTitle"/>--%>
-
 <page:templateWithoutSearch>
 
     <jsp:attribute name="title">Edit</jsp:attribute>
@@ -42,8 +36,6 @@
 
                     <p class="lead">${employeeEdit}</p>
 
-                    <%--<div id="update">--%>
-                            <%--<form:form modelAttribute="employee" id="editForm" method="post">--%>
                         <form:form modelAttribute="employee" action="/update" method="post">
 
                         <table class="table table-hover">
@@ -51,11 +43,10 @@
                             <tr>
                                 <td class="text-left" width="120">${employeeFio}</td>
                                 <td>
-                                    <form:select path="department.id">
+                                    <form:select path="person.id">
                                         <form:options items="${person}" itemValue="id" itemLabel="name"/>
                                     </form:select>
                                 </td>
-                                <%--<td class="text-left"><form:input path="person.name"/></td>--%>
                             </tr>
                             <tr>
                                 <td class="text-left" width="120">${employeeStructure}</td>
@@ -90,8 +81,6 @@
                     </div>
 
                     </form:form>
-
-                <%--</div>--%>
 
                 <!-- /.Page body -->
 

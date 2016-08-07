@@ -3,6 +3,7 @@ package com.phonebook.service;
 import com.phonebook.dao.PersonDao;
 import com.phonebook.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,31 +20,37 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    @Transactional
     public void addPerson(Person Person) {
 
     }
 
     @Override
+    @Transactional
     public void updatePerson(Person Person) {
 
     }
 
     @Override
+    @Transactional
     public void removePerson(long id) {
 
     }
 
     @Override
+    @Transactional
     public Person getPersonById(long id) {
         return null;
     }
 
     @Override
+    @Transactional
     public List<Person> getAllPersons() {
         return personDao.listPerson();
     }
 
     @Override
+    @Transactional
     public List<Person> searchPerson(String searchText) {
         return null;
     }

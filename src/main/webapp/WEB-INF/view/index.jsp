@@ -33,7 +33,7 @@
                 <!-- Page body -->
                     <%--<div class="col-xs-12 col-sm-12 col-md-9 text-center">--%>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <%--<p class="lead">${rightMenuHeader}</p>--%>
+                        <%--<p class="lead">${rightMenuHeader}</p>--%>
                     <table class="table table-hover collaborator-table" style="width:100%">
                         <thead>
                         <tr>
@@ -48,11 +48,13 @@
 
                         <c:forEach items="${resultObject}" var="result">
                             <tr>
-                                <td class="text-left"><a href="/view/${result.id}"
-                                                         target="_blank">${result.person.name}</a></td>
+                                    <%--<td class="text-left"><a href="/view/${result.id}"--%>
+                                    <%--target="_blank">${result.person.name}</a></td>--%>
+                                <td class="text-left"><a href="/view/${result.id}">${result.person.name}</a></td>
                                 <td class="text-left"><c:out
                                         value="${result.department.name}"/></td>
-                                <td class="text-left hidden-xs hidden-sm"><c:out value="${result.profession.name}"/></td>
+                                <td class="text-left hidden-xs hidden-sm"><c:out
+                                        value="${result.profession.name}"/></td>
                                     <%--<td class="text-left"><c:out value="${result.email}"/></td>--%>
                                 <td class="text-left hidden-xs hidden-sm"><a
                                         href="mailto:${result.email}">${result.email}</a></td>
