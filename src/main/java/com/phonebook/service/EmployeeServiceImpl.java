@@ -55,10 +55,4 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> searchEmployee(String searchText) {
         return this.employeeDao.listEmployeeByFio(searchText);
     }
-
-//    @Override
-//    @Transactional
-//    public List<Department> getAllDepartments() {
-//        return this.departmentDao.listDepartment();
-//    }
 }

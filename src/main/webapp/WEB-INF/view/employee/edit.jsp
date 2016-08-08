@@ -36,10 +36,11 @@
 
                     <p class="lead">${employeeEdit}</p>
 
-                        <form:form modelAttribute="employee" action="/update" method="post">
+                    <form:form modelAttribute="employee" action="/update" method="post">
 
                         <table class="table table-hover">
 
+                            <div class="hidden-xs-up">${id}</div>
                             <tr>
                                 <td class="text-left" width="120">${employeeFio}</td>
                                 <td>
@@ -73,14 +74,14 @@
                                 <td class="text-left"><form:input path="phone"/></td>
                             </tr>
                         </table>
-                    </div>
 
-                    <div>
-                        <button class = "btn btn-success" type = "submit">${buttonOk}</button>
-                        <a class="btn btn-default">${buttonCancel}</a>
-                    </div>
+                        <div>
+                            <button class="btn btn-success" type="submit">${buttonOk}</button>
+                            <a class="btn btn-default">${buttonCancel}</a>
+                        </div>
 
                     </form:form>
+                </div>
 
                 <!-- /.Page body -->
 
