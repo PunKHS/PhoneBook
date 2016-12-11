@@ -20,7 +20,7 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public void addEmployee(Person Person) {
+    public void addPerson(Person Person) {
 
     }
 

@@ -20,6 +20,7 @@
 <spring:message code="employee.profession" var="employeeProfession"/>
 <spring:message code="employee.email" var="employeeEmail"/>
 <spring:message code="employee.phone" var="employeePhone"/>
+<spring:message code="employee.mobilePhone" var="employeeMobilePhone"/>
 
 <page:templateWithoutSearch>
 
@@ -39,11 +40,14 @@
                     <form:form modelAttribute="employee" action="/update" method="post">
 
                         <table class="table table-hover">
-
-                            <div class="hidden-xs-up">${id}</div>
+                            <tr hidden="true">
+                                <td class="text-left" width="120"></td>
+                                <td class="text-left"><form:input path="id"/></td>
+                            </tr>
                             <tr>
                                 <td class="text-left" width="120">${employeeFio}</td>
-                                <td>
+                                <td class="text-left">${employee.person.name}</td>
+                                <td hidden="true">
                                     <form:select path="person.id">
                                         <form:options items="${person}" itemValue="id" itemLabel="name"/>
                                     </form:select>
@@ -72,6 +76,10 @@
                             <tr>
                                 <td class="text-left" width="120">${employeePhone}</td>
                                 <td class="text-left"><form:input path="phone"/></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left" width="120">${employeeMobilePhone}</td>
+                                <td class="text-left"><form:input path="mobilePhone"/></td>
                             </tr>
                         </table>
 

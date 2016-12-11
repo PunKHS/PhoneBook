@@ -39,7 +39,11 @@
                     <p class="lead">${employeeView}</p>
 
                         <table class="table table-hover">
-
+                            <%--Скрытый элемент, необходимый для передачи ID employee--%>
+                            <tr hidden="true">
+                                <td class="text-left" width="120"></td>
+                                <td class="text-left">${employee.id}</td>
+                            </tr>
                             <tr>
                                 <td class="text-left" width="120">${employeeFio}</td>
                                 <td class="text-left">${employee.person.name}</td>

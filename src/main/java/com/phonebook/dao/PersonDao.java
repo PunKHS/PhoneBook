@@ -7,7 +7,7 @@ import java.util.List;
  * Created by PunKHS on 07.08.2016.
  */
 public interface PersonDao {
-    public void addEmployee(Person Person);
+    public void addPerson(Person Person);
 
     public void updatePerson(Person Person);
 

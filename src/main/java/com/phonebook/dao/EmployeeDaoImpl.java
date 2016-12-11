@@ -17,7 +17,7 @@ import javax.persistence.TypedQuery;
  */
 
 @Repository
-//@Transactional //need to update\delete queries. Don't forget <tx:annotation-driven/>
+@Transactional //need to update\delete queries. Don't forget <tx:annotation-driven/>
 public class EmployeeDaoImpl implements EmployeeDao {
 
 private static final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeDaoImpl.class);
