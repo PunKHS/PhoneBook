@@ -13,6 +13,7 @@
 <spring:message code="button.delete" var="buttonDelete"/>
 
 <spring:message code="employee.view" var="employeeView"/>
+<spring:message code="employee.add" var="employeeAdd"/>
 <spring:message code="employee.edit" var="employeeEdit"/>
 
 <spring:message code="employee.fio" var="employeeFio"/>
@@ -34,11 +35,8 @@
 
                 <!-- Page body -->
                 <div class="col-xs-12 col-sm-12 col-md-12">
-
                     <p class="lead">${employeeEdit}</p>
-
                     <form:form modelAttribute="employee" action="/update" method="post">
-
                         <table class="table table-hover">
                             <tr hidden="true">
                                 <td class="text-left" width="120"></td>
@@ -87,10 +85,8 @@
                             <button class="btn btn-success" type="submit">${buttonOk}</button>
                             <a class="btn btn-default">${buttonCancel}</a>
                         </div>
-
                     </form:form>
                 </div>
-
                 <!-- /.Page body -->
 
             </div>

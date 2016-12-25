@@ -53,7 +53,7 @@ public class EmployeeController {
     public ModelAndView getEmployeeById(@PathVariable("id") long id) {
         Employee employee = employeeService.getEmployeeById(id);
         logger.info("EmployeeController getEmployeeById is called");
-        return new ModelAndView("employee/view", "employee", employee);
+        return new ModelAndView("employee/employee_view", "employee", employee);
     }
 
     @RequestMapping(value = "/edit/{id}", params = "form", method = RequestMethod.GET)
@@ -62,12 +62,28 @@ public class EmployeeController {
         model.addAttribute("department", departmentService.getAllDepartments());
         model.addAttribute("profession", professionService.getAllProfessions());
         model.addAttribute("person", personService.getAllPersons());
-        return "employee/edit";
+        return "employee/employee_edit";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@ModelAttribute("employee") Employee employee) {
         employeeService.updateEmployee(employee);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public ModelAndView insert(Model model){
+        Employee employee = new Employee();
+        model.addAttribute("employee", employee);
+        model.addAttribute("person", personService.getAllPersons());
+        model.addAttribute("department", departmentService.getAllDepartments());
+        model.addAttribute("profession", professionService.getAllProfessions());
+        return new ModelAndView("employee/employee_add", "employee", employee);
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(@ModelAttribute("employee") Employee employee) {
+        employeeService.addEmployee(employee);
         return "redirect:/";
     }
 }

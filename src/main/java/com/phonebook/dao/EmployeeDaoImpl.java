@@ -1,7 +1,9 @@
 package com.phonebook.dao;
 
 import com.phonebook.model.Employee;
+
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,7 +22,7 @@ import javax.persistence.TypedQuery;
 @Transactional //need to update\delete queries. Don't forget <tx:annotation-driven/>
 public class EmployeeDaoImpl implements EmployeeDao {
 
-private static final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeDaoImpl.class);
+    private static final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeDaoImpl.class);
 
     @Autowired
 //    @PersistenceContext
@@ -33,6 +35,7 @@ private static final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeD
     @Override
     public void addEmployee(Employee employee) {
         entityManager.persist(employee);
+        entityManager.refresh(employee);
         logger.info("Employee adding... " + employee);
     }
 
@@ -45,7 +48,7 @@ private static final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeD
     @Override
     public void removeEmployee(long id) {
         Employee employee = (Employee) entityManager.find(Employee.class, id);
-        if(employee != null){
+        if (employee != null) {
             entityManager.remove(employee);
         }
         logger.info("Employee was successfully deleted... " + employee);

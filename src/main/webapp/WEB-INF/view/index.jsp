@@ -14,6 +14,8 @@
 <spring:message code="rightMenu.phone" var="rightMenuPhone"/>
 <%--<c:url value="/index" var="findAllEmployee"/>--%>
 
+<spring:url value="/add" var="addUrl"/>
+
 <page:templateWithSearch>
 
     <jsp:attribute name="title">Index</jsp:attribute>
@@ -31,6 +33,14 @@
                 <!-- /.Left menu -->
 
                 <!-- Page body -->
+                <div>
+                    <a class="btn btn-success" href="${addUrl}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                        </span> Добавить
+                    </a>
+                </div>
+
+
                     <%--<div class="col-xs-12 col-sm-12 col-md-9 text-center">--%>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <%--<p class="lead">${rightMenuHeader}</p>--%>
