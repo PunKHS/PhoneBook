@@ -40,6 +40,10 @@
         <javax.mail.version>1.4.7</javax.mail.version>
         <!--Velocity for Mail-->
         <velocity.version>1.7</velocity.version>
+        <!-- Jackson for JSON -->
+        <jackson.version>2.8.6</jackson.version>
+        <!-- Ehcache -->
+        <ehcache.version>3.2.0</ehcache.version>
     </properties>
 
     <dependencies>
@@ -187,6 +191,35 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
             <version>${velocity.version}</version>
+        </dependency>
+
+        <!-- Jackson for JSON -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml</groupId>
+            <artifactId>classmate</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <!-- Ehcache -->
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache.version}</version>
         </dependency>
 
     </dependencies>

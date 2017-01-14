@@ -1,16 +1,20 @@
 package com.phonebook.model;
 
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "EMPLOYEE")
-public class Employee {
+@JsonPropertyOrder({"id", "person"})
+public class Employee implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
+    @JsonView
     private long id;
 
     @ManyToOne

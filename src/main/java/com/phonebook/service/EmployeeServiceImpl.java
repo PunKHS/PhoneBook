@@ -5,6 +5,8 @@ import java.util.List;
 import com.phonebook.dao.EmployeeDao;
 import com.phonebook.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,9 +46,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
+//    @Cacheable("employee")
     public List<Employee> findAllEmployee() {
         return this.employeeDao.listEmployee();
     }
+
+    // This method will remove all 'Employee' from cache, say as a result of flush API call.
+//    @CacheEvict(value = "products", allEntries = true)
+//    public void refreshAllEmployee() {
+//    }
 
     @Override
     @Transactional

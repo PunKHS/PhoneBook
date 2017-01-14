@@ -46,8 +46,14 @@ public class EmployeeController {
     public ModelAndView searchEmployee(@RequestParam("searchText") String text) {
         logger.info("EmployeeController searchEmployee is called");
         List<Employee> Employees = employeeService.searchEmployee(text);
-        return new ModelAndView("/index", "resultObject", Employees);
+         return new ModelAndView("/index", "resultObject", Employees);
     }
+
+//    @RequestMapping(value = "/search_tag",  method = RequestMethod.GET)
+//    public @ResponseBody List getTagList(@RequestParam("searchEmployee") String text) {
+//        List<Employee> employees = employeeService.searchEmployee(text);
+//        return tagList;
+//    }
 
     @RequestMapping("/view/{id}")
     public ModelAndView getEmployeeById(@PathVariable("id") long id) {
