@@ -1,6 +1,7 @@
 package com.phonebook.model;
 
 import com.fasterxml.jackson.annotation.*;
+import com.phonebook.service.View;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    @JsonView
+    @JsonView(View.Autocomplete.class)
     private long id;
 
     @ManyToOne
@@ -38,6 +39,9 @@ public class Employee implements Serializable {
 
     @Column(name = "MOBILE_PHONE")
     private String mobilePhone;
+
+    @Column(name = "AVAILABLE")
+    private long available;
 
     public long getId() {
         return id;
@@ -95,7 +99,15 @@ public class Employee implements Serializable {
         this.mobilePhone = mobilePhone;
     }
 
-//    @Override
+    public long getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(long available) {
+        this.available = available;
+    }
+
+    //    @Override
 //    public String toString() {
 //        return "Employee{" +
 //                "id=" + id +

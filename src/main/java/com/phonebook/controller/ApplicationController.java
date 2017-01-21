@@ -1,10 +1,9 @@
 package com.phonebook.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.phonebook.model.Employee;
-import com.phonebook.service.DepartmentService;
-import com.phonebook.service.EmployeeService;
-import com.phonebook.service.PersonService;
-import com.phonebook.service.ProfessionService;
+import com.phonebook.model.Person;
+import com.phonebook.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,7 @@ import java.util.List;
 import org.slf4j.Logger;
 
 @Controller
-public class EmployeeController {
+public class ApplicationController {
 
     @Autowired(required = true)
     @Qualifier(value = "employeeService")
@@ -33,7 +32,7 @@ public class EmployeeController {
     @Qualifier(value = "personService")
     private PersonService personService;
 
-    private final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeController.class);
+    private final Logger logger = org.slf4j.LoggerFactory.getLogger(ApplicationController.class);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView findAllEmployee() {
@@ -49,11 +48,12 @@ public class EmployeeController {
          return new ModelAndView("/index", "resultObject", Employees);
     }
 
-//    @RequestMapping(value = "/search_tag",  method = RequestMethod.GET)
-//    public @ResponseBody List getTagList(@RequestParam("searchEmployee") String text) {
-//        List<Employee> employees = employeeService.searchEmployee(text);
-//        return tagList;
-//    }
+    @JsonView(View.UI.class)
+    @RequestMapping(value = "/search-person",  method = RequestMethod.GET)
+    public @ResponseBody List<Person> getEmployeeForAutocomplete(@RequestParam("searchText") String text) {
+        List<Person> persons = personService.searchPerson(text);
+        return persons;
+    }
 
     @RequestMapping("/view/{id}")
     public ModelAndView getEmployeeById(@PathVariable("id") long id) {

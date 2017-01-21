@@ -1,11 +1,11 @@
 package com.phonebook.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.phonebook.service.View;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,12 +15,17 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
+    @JsonView(View.UI.class)
     private long id;
 
     @NotEmpty
     @Size(min = 10, max = 200)
     @Column(name = "NAME")
+    @JsonView(View.UI.class)
     private String name;
+
+    @Column(name = "AVAILABLE")
+    private long available;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Employee> employees;
@@ -39,6 +44,14 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public long getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(long available) {
+        this.available = available;
     }
 
     public Set<Employee> getEmployees() {

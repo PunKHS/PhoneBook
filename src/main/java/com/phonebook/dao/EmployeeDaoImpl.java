@@ -64,7 +64,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
 //    @SuppressWarnings("unchecked")
     public List<Employee> listEmployee() {
-        String query = "from Employee order by person.name";
+        String query = "from Employee where available = 1 order by person.name";
         TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
         logger.info("Employee list was successfully find");
         return typedQuery.getResultList();
@@ -74,7 +74,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 //    @SuppressWarnings("unchecked")
     public List<Employee> listEmployeeByFio(String searchText) {
 //        String query = "from Employee where person.name like '%" + searchText + "%' order by person.name";
-        String query = "from Employee where lower(person.name) like lower(trim(:pattern))";
+        String query = "from Employee where lower(person.name) like lower(trim(:pattern)) and available = 1 order by person.name";
         TypedQuery<Employee> typedQuery = entityManager.createQuery(query, Employee.class);
         typedQuery.setParameter("pattern", "%" + searchText + "%");
         logger.info("Employee search ");

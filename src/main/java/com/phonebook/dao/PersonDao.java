@@ -15,5 +15,7 @@ public interface PersonDao {
 
     public Person getPersonById(long id);
 
-    public List<Person> listPerson();
+    public List<Person> listAvailablePerson();
+
+    public List<Person> listAvailablePersonByFio(String searchText);
 }

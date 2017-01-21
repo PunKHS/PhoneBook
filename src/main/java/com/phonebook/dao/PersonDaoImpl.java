@@ -1,6 +1,7 @@
 package com.phonebook.dao;
 
 import com.phonebook.model.Person;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
@@ -11,6 +12,8 @@ import java.util.List;
  * Created by PunKHS on 07.08.2016.
  */
 public class PersonDaoImpl implements PersonDao {
+
+    private static final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeDaoImpl.class);
 
     @Autowired
     private EntityManager entityManager;
@@ -40,9 +43,17 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public List<Person> listPerson() {
-        String query = "from Person order by Name";
+    public List<Person> listAvailablePerson() {
+        String query = "from Person where available = 1 order by name";
         TypedQuery<Person> typedQuery = entityManager.createQuery(query, Person.class);
+        return typedQuery.getResultList();
+    }
+
+    public List<Person> listAvailablePersonByFio(String searchText){
+        String query = "from Person where lower(name) like lower(trim(:pattern)) and available = 1 order by name";
+        TypedQuery<Person> typedQuery = entityManager.createQuery(query, Person.class);
+        typedQuery.setParameter("pattern", "%" + searchText + "%");
+        logger.info("Person search ");
         return typedQuery.getResultList();
     }
 }

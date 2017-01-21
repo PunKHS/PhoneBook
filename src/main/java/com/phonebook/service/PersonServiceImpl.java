@@ -46,12 +46,12 @@ public class PersonServiceImpl implements PersonService {
     @Override
     @Transactional
     public List<Person> getAllPersons() {
-        return personDao.listPerson();
+        return personDao.listAvailablePerson();
     }
 
     @Override
     @Transactional
     public List<Person> searchPerson(String searchText) {
-        return null;
+        return this.personDao.listAvailablePersonByFio(searchText);
     }
 }

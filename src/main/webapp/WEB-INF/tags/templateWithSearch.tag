@@ -40,59 +40,53 @@
     <script src="${js}"></script>
 
     <!-- Typeahead -->
-    <spring:url value="/resources/js/typeahead.jquery.min.js" var="typeaheadjs"/>
+    <%--<spring:url value="/resources/js/typeahead.jquery.min.js" var="typeaheadjs"/>--%>
+    <spring:url value="/resources/js/typeahead.bundle.min.js" var="typeaheadjs"/>
     <script src="${typeaheadjs}"></script>
 
     <script type="text/javascript">
-//        $(document).ready(function () {
-//            var substringMatcher = function (strs) {
-//                return function findMatches(q, cb) {
-//                    var matches, substringRegex;
-//
-//                    // an array that will be populated with substring matches
-//                    matches = [];
-//
-//                    // regex used to determine if a string contains the substring `q`
-//                    substrRegex = new RegExp(q, 'i');
-//
-//                    // iterate through the pool of strings and for any string that
-//                    // contains the substring `q`, add it to the `matches` array
-//                    $.each(strs, function (i, str) {
-//                        if (substrRegex.test(str)) {
-//                            matches.push(str);
-//                        }
-//                    });
-//
-//                    cb(matches);
-//                };
-//            };
-//
-//            var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-//                'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-//                'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-//                'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-//                'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-//                'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-//                'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-//                'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-//                'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-//            ];
-//
-//            $('#searchText .form-control').typeahead({
-//                    hint: true,
-//                    highlight: true,
-//                    minLength: 1
-//                },
-//                {
-//                    name: 'states',
-//                    source: substringMatcher(states)
-//                });
-//        });
+        // http://stackoverflow.com/questions/22730407/typeahead-and-bloodhound-how-to-get-json-result
+        $(document).ready(function () {
+            var persons = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/search-person?searchText=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            persons.initialize();
+
+            $('#searchText .form-control')
+                .typeahead(
+                    {
+                        hint: true,
+                        highlight: true,
+                        minLength: 2
+                    },
+                    {
+                        name: 'name',
+                        limit: 10,
+                        displayKey: function (response) {
+                            return response.name;
+                        },
+                        source: persons.ttAdapter()
+                    }
+                )
+                .bind("typeahead:selected", function () {
+                    $("form").submit();
+                });
+        });
     </script>
 
 </head>
 
 <body>
+
+<spring:message code="navMenu.profil" var="navMenuProfil"/>
+<spring:message code="navMenu.favorites" var="navMenuFavorites"/>
+<spring:message code="navMenu.searchText" var="navMenuSearchText"/>
 
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -104,28 +98,42 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><strong><spring:message code="navMenu.home"/></strong></a>
+            <a class="navbar-brand" href="/">
+                <div class="hidden-xs hidden-sm">
+                    <strong><spring:message code="navMenu.home"/></strong>
+                </div>
+                <div class="hidden-md hidden-lg">
+                    <span class="glyphicon glyphicon-earphone"></span>
+                </div>
+            </a>
         </div>
         <div class="navbar-collapse collapse" id="navbar-collapsible">
-            <spring:message code="navMenu.profil" var="navMenuProfil"/>
-            <spring:message code="navMenu.favorites" var="navMenuFavorites"/>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span><strong> ${navMenuProfil}</strong></a>
-                </li>
-                <li><a href="#"><span class="glyphicon glyphicon-heart"></span><strong> ${navMenuFavorites}</strong></a>
-                </li>
-            </ul>
+            <div class="hidden-xs hidden-sm">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span><strong> ${navMenuProfil}</strong></a>
+                    </li>
+                    <li><a href="#"><span
+                            class="glyphicon glyphicon-heart"></span><strong> ${navMenuFavorites}</strong></a>
+                    </li>
+                </ul>
+            </div>
             <%-- Search Box --%>
-            <spring:message code="navMenu.searchText" var="navMenuSearchText"/>
             <form class="navbar-form" method="get" action="/search">
                 <div class="form-group" style="display:inline;">
                     <div id="searchText" class="input-group" style="display:table;">
                         <input name="searchText" class="form-control" placeholder="${navMenuSearchText}"
                                autocomplete="off" autofocus="autofocus" type="text">
-                        <span class="input-group-addon" style="width:1%;">
-                            <span class="glyphicon glyphicon-search">
-                            </span>
-                        </span>
+                        <%--<span class="input-group-addon" style="width:1%;">--%>
+                        <%--<span class="glyphicon glyphicon-search">--%>
+                        <%--</span>--%>
+                        <%--</span>--%>
+
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+
                         <%--<span class="input-group-btn">--%>
                         <%--<button class="btn btn-default" type="button">Go!</button>--%>
                         <%--</span>--%>
