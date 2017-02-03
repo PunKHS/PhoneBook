@@ -77,7 +77,7 @@ public class ApplicationController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
     public ModelAndView insert(Model model){
         Employee employee = new Employee();
         model.addAttribute("employee", employee);

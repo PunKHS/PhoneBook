@@ -85,7 +85,7 @@
 <body>
 
 <spring:message code="navMenu.profil" var="navMenuProfil"/>
-<spring:message code="navMenu.favorites" var="navMenuFavorites"/>
+<spring:message code="navMenu.settings" var="navMenuSettings"/>
 <spring:message code="navMenu.searchText" var="navMenuSearchText"/>
 
 <!-- Navigation -->
@@ -111,9 +111,6 @@
             <div class="hidden-xs hidden-sm">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span><strong> ${navMenuProfil}</strong></a>
-                    </li>
-                    <li><a href="#"><span
-                            class="glyphicon glyphicon-heart"></span><strong> ${navMenuFavorites}</strong></a>
                     </li>
                 </ul>
             </div>

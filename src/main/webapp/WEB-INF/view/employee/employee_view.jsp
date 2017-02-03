@@ -69,6 +69,7 @@
                         <div>
                             <a class="btn btn-success" href="${editUrl}/${employee.id}?form">${buttonEdit}</a>
                             <a class="btn btn-danger">${buttonDelete}</a>
+                            <a class="btn btn-default" href="/">${buttonCancel}</a>
                         </div>
                 </div>
                 <!-- /.Page body -->

@@ -83,7 +83,7 @@
 
                         <div>
                             <button class="btn btn-success" type="submit">${buttonOk}</button>
-                            <a class="btn btn-default">${buttonCancel}</a>
+                            <a class="btn btn-default" href="/">${buttonCancel}</a>
                         </div>
                     </form:form>
                 </div>
