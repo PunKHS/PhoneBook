@@ -1,0 +1,15 @@
+<body>
+<div>
+    <br/>
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                <h2>$header</h2>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
