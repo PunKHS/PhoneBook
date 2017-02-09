@@ -1,8 +1,6 @@
 package com.phonebook.controller;
 
-/**
- * Created by PunKHS on 06.08.2016.
- */
+
 public class Message {
     private String type;
     private String message;

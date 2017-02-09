@@ -7,9 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by PunKHS on 07.08.2016.
- */
+
 public class PersonServiceImpl implements PersonService {
 
     @Autowired

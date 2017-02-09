@@ -7,9 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-/**
- * Created by PunKHS on 06.08.2016.
- */
+
 public class DepartmentDaoImpl implements DepartmentDao {
 
     @Autowired

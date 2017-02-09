@@ -4,9 +4,7 @@ import com.phonebook.model.Profession;
 
 import java.util.List;
 
-/**
- * Created by PunKHS on 07.08.2016.
- */
+
 public interface ProfessionService {
 
     public void addProfession(Profession Profession);

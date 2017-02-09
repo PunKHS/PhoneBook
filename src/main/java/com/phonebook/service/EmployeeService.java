@@ -4,9 +4,6 @@ import com.phonebook.model.Department;
 import com.phonebook.model.Employee;
 import java.util.List;
 
-/**
- * Created by PunKHS on 28.07.16.
- */
 
 public interface EmployeeService {
 

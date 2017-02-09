@@ -4,9 +4,6 @@ import com.phonebook.model.Department;
 
 import java.util.List;
 
-/**
- * Created by PunKHS on 06.08.2016.
- */
 
 public interface DepartmentService {
 

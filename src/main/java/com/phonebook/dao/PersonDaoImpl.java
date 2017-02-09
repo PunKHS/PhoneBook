@@ -8,9 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-/**
- * Created by PunKHS on 07.08.2016.
- */
+
 public class PersonDaoImpl implements PersonDao {
 
     private static final Logger logger = org.slf4j.LoggerFactory.getLogger(EmployeeDaoImpl.class);

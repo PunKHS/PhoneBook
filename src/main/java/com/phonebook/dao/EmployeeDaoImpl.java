@@ -14,9 +14,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-/**
- * Created by PunKHS on 27.07.2016.
- */
 
 @Repository
 @Transactional //need to update\delete queries. Don't forget <tx:annotation-driven/>

@@ -7,9 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by PunKHS on 06.08.2016.
- */
+
 public class DepartmentServiceImpl implements DepartmentService {
 
     @Autowired
