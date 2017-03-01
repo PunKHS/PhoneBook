@@ -84,9 +84,12 @@
 
 <body>
 
-<spring:message code="navMenu.profil" var="navMenuProfil"/>
-<spring:message code="navMenu.settings" var="navMenuSettings"/>
-<spring:message code="navMenu.searchText" var="navMenuSearchText"/>
+<spring:message code="navMenu.home" var="NavHome"/>
+<spring:message code="navMenu.profil" var="NavMenuProfil"/>
+<spring:message code="navMenu.settings" var="NavMenuSettings"/>
+<spring:message code="navMenu.searchText" var="NavMenuSearchText"/>
+<spring:message code="navMenu.logout" var="Logout"/>
+<spring:message code="page.footer" var="Footer"/>
 
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -98,9 +101,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="/welcome">
                 <div class="hidden-xs hidden-sm">
-                    <strong><spring:message code="navMenu.home"/></strong>
+                    <strong>${NavHome}</strong>
                 </div>
                 <div class="hidden-md hidden-lg">
                     <span class="glyphicon glyphicon-earphone"></span>
@@ -110,15 +113,34 @@
         <div class="navbar-collapse collapse" id="navbar-collapsible">
             <div class="hidden-xs hidden-sm">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span><strong> ${navMenuProfil}</strong></a>
-                    </li>
+                    <c:if test="${pageContext.request.userPrincipal.name != null}">
+
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <strong> ${pageContext.request.userPrincipal.name}</strong>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a onclick="document.forms['logoutForm'].submit()">
+                                <span class="glyphicon glyphicon-off"></span>
+                                <strong> ${Logout}</strong>
+                            </a>
+                        </li>
+
+                        <form id="logoutForm" method="post" action="${contextPath}/logout">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        </form>
+
+                    </c:if>
                 </ul>
             </div>
             <%-- Search Box --%>
             <form class="navbar-form" method="get" action="/search">
                 <div class="form-group" style="display:inline;">
                     <div id="searchText" class="input-group" style="display:table;">
-                        <input name="searchText" class="form-control" placeholder="${navMenuSearchText}"
+                        <input name="searchText" class="form-control" placeholder="${NavMenuSearchText}"
                                autocomplete="off" autofocus="autofocus" type="text">
                         <%--<span class="input-group-addon" style="width:1%;">--%>
                         <%--<span class="glyphicon glyphicon-search">--%>
@@ -153,7 +175,7 @@
             <div class="col-lg-12">
                 <%--<a href="<%=request.getContextPath()%>?lang=en">EN</a>--%>
                 <%--<a href="<%=request.getContextPath()%>?lang=ru">RU</a>--%>
-                <p><spring:message code="page.footer"/></p>
+                <p>${Footer}</p>
             </div>
         </div>
     </footer>

@@ -1,6 +1,5 @@
-#.idea/
+.idea/
 out/
 target/
-src/main/resources/test_data
 classes/
 #*.iml

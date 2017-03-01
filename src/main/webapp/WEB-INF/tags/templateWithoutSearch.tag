@@ -23,6 +23,14 @@
     <spring:url value="/resources/css/style.css" var="startertemplate"/>
     <link href="${startertemplate}" rel="stylesheet"/>
 
+    <!-- Typeahead CSS -->
+    <spring:url value="/resources/css/typeaheadjs.css" var="typeaheadcss"/>
+    <link href="${typeaheadcss}" rel="stylesheet"/>
+
+    <!-- Common CSS -->
+    <spring:url value="/resources/css/common.css" var="common"/>
+    <link href="${common}" rel="stylesheet"/>
+
     <!-- Custom Fonts -->
     <spring:url value="/resources/font-awesome/css/font-awesome.min.css" var="fontawesome"/>
     <link href="${fontawesome}" rel="stylesheet"/>
@@ -35,6 +43,11 @@
     <spring:url value="/resources/js/bootstrap.min.js" var="js"/>
     <script src="${js}"></script>
 
+    <!-- Typeahead -->
+    <%--<spring:url value="/resources/js/typeahead.jquery.min.js" var="typeaheadjs"/>--%>
+    <spring:url value="/resources/js/typeahead.bundle.min.js" var="typeaheadjs"/>
+    <script src="${typeaheadjs}"></script>
+
 </head>
 
 <body>
@@ -43,7 +56,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/"><strong><spring:message code="navMenu.home"/></strong></a>
+            <a class="navbar-brand" href="/welcome"><strong><spring:message code="navMenu.home"/></strong></a>
         </div>
     </div>
 </nav>

@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:dispatcher-servlet.xml", "classpath:application-context.xml"})
+@ContextConfiguration(locations = {"classpath:dispatcher-servlet.xml", "classpath:appconfig-root.xml"})
 
 @Transactional
 public class EmployeeTest {

@@ -3,11 +3,14 @@ package com.phonebook.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.phonebook.model.Employee;
 import com.phonebook.model.Person;
+import com.phonebook.model.User;
 import com.phonebook.service.*;
+import com.phonebook.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
@@ -32,20 +35,75 @@ public class ApplicationController {
     @Qualifier(value = "personService")
     private PersonService personService;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private SecurityService securityService;
+
+    @Autowired
+    private UserValidator userValidator;
+
     private final Logger logger = org.slf4j.LoggerFactory.getLogger(ApplicationController.class);
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registration(Model model) {
+        model.addAttribute("userForm", new User());
+
+        return "registration";
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+        userValidator.validate(userForm, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+
+        userService.save(userForm);
+
+        securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
+
+        return "redirect:/welcome";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, String error, String logout) {
+        if (error != null) {
+            model.addAttribute("error", "Username or password is incorrect.");
+        }
+
+        if (logout != null) {
+            model.addAttribute("message", "Logged out successfully.");
+        }
+
+        return "login";
+    }
+
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
+    public String welcome(Model model) {
+        return "redirect:/welcome";
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String admin(Model model) {
+        return "admin";
+    }
+
+//    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public ModelAndView findAllEmployee() {
         logger.info("EmployeeController findAllEmployee is called");
         List<Employee> Employees = employeeService.findAllEmployee();
-        return new ModelAndView("/index", "resultObject", Employees);
+        return new ModelAndView("/welcome", "resultObject", Employees);
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ModelAndView searchEmployee(@RequestParam("searchText") String text) {
         logger.info("EmployeeController searchEmployee is called");
         List<Employee> Employees = employeeService.searchEmployee(text);
-         return new ModelAndView("/index", "resultObject", Employees);
+         return new ModelAndView("/welcome", "resultObject", Employees);
     }
 
     @JsonView(View.UI.class)
