@@ -8,16 +8,22 @@ import com.phonebook.service.*;
 import com.phonebook.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
+import java.util.Locale;
+
 import org.slf4j.Logger;
 
 @Controller
 public class ApplicationController {
+
+    @Autowired
+    private MessageSource messageSource;
 
     @Autowired(required = true)
     @Qualifier(value = "employeeService")
@@ -69,13 +75,15 @@ public class ApplicationController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
+    public String login(Model model, String error, String logout, Locale locale) {
         if (error != null) {
-            model.addAttribute("error", "Username or password is incorrect.");
+            String message = messageSource.getMessage("login.usernameOrPassIncorrect", new Object[]{}, locale);
+            model.addAttribute("message", message);
         }
 
         if (logout != null) {
-            model.addAttribute("message", "Logged out successfully.");
+            String message = messageSource.getMessage("login.loggedOutSuccessfully", new Object[]{}, locale);
+            model.addAttribute("message", message);
         }
 
         return "login";
@@ -91,7 +99,6 @@ public class ApplicationController {
         return "admin";
     }
 
-//    @RequestMapping(value = "/", method = RequestMethod.GET)
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public ModelAndView findAllEmployee() {
         logger.info("EmployeeController findAllEmployee is called");
@@ -129,9 +136,15 @@ public class ApplicationController {
         return "employee/employee_edit";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/updateEmployee", method = RequestMethod.POST)
     public String update(@ModelAttribute("employee") Employee employee) {
         employeeService.updateEmployee(employee);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/disableEmployee/{id}", params = "form", method = RequestMethod.POST)
+    public String disable(@PathVariable("id") long id, Model model) {
+        employeeService.disableEmployee(id);
         return "redirect:/";
     }
 

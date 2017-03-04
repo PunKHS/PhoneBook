@@ -32,11 +32,12 @@
         <!-- Page Content -->
         <div class="container">
             <div class="row">
+                <br>
 
                 <!-- Page body -->
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <p class="lead">${employeeEdit}</p>
-                    <form:form modelAttribute="employee" action="/update" method="post">
+                    <form:form modelAttribute="employee" action="/updateEmployee" method="post">
                         <table class="table table-hover">
                             <tr hidden="true">
                                 <td class="text-left" width="120"></td>

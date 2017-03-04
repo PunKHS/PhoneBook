@@ -40,6 +40,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
+    public void disableEmployee(long id) {
+        Employee employee = employeeDao.getEmployeeById(id);
+        employee.setAvailable(0);
+        this.employeeDao.updateEmployee(employee);
+    }
+
+    @Override
+    @Transactional
     public Employee getEmployeeById(long id) {
         return this.employeeDao.getEmployeeById(id);
     }

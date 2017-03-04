@@ -8,14 +8,16 @@
     http://www.springframework.org/schema/data/jpa
     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
     http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+    http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+http://www.springframework.org/schema/data/jpa
+http://www.springframework.org/schema/jdbc ">
 
     <!-- XML Bean Definitions -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${jdbc.hsqldb.driverClass}" />
-        <property name="url" value="${jdbc.hsqldb.url}" />
-        <property name="username" value="${jdbc.hsqldb.username}" />
-        <property name="password" value="${jdbc.hsqldb.password}" />
+        <property name="driverClassName" value="${jdbc.hsqldb.driverClass}"/>
+        <property name="url" value="${jdbc.hsqldb.url}"/>
+        <property name="username" value="${jdbc.hsqldb.username}"/>
+        <property name="password" value="${jdbc.hsqldb.password}"/>
     </bean>
 
     <!-- Initialize Embedded DataSource -->
@@ -27,14 +29,14 @@
     <!--Do not forget activate @Transactional JPA annotation with <annotation-driven/>-->
     <!-- JPA Persistence Context and EntityManager configuration -->
     <bean id="entityManagerFactory"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" >
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <!--packagesToScan - search Entity and mapping them -->
-        <property name="packagesToScan" value="com.phonebook.model" />
-        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="com.phonebook.model"/>
+        <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" >
-                <property name="generateDdl" value="true" />
-                <property name="showSql" value="true" />
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="generateDdl" value="true"/>
+                <property name="showSql" value="true"/>
             </bean>
         </property>
         <property name="jpaProperties">

@@ -19,9 +19,10 @@
         <!--Spring-->
         <spring.version>4.3.6.RELEASE</spring.version>
         <spring-security.version>4.2.1.RELEASE</spring-security.version>
+        <!--Spring Data-->
         <spring.data.jpa.version>1.11.0.RELEASE</spring.data.jpa.version>
         <jpa.version>1.0.0.Final</jpa.version>
-        <!--Валидация-->
+        <!--Validation-->
         <jsr349.version>1.1.0.Final</jsr349.version>
         <!--Logging-->
         <!--logback - improved version of log4j-->
@@ -35,8 +36,6 @@
         <hibernate.version>5.0.1.Final</hibernate.version>
         <!--Hibernate validator (contains @NotEmpty)-->
         <hibernate-validator.version>5.1.0.Final</hibernate-validator.version>
-        <!--Spring Data-->
-        <!--<spring-framework.data.version>1.9.1.RELEASE</spring-framework.data.version>-->
         <!--Java Mail-->
         <javax.mail.version>1.4.7</javax.mail.version>
         <!--Velocity for Mail-->

@@ -13,6 +13,8 @@ public interface EmployeeService {
 
     public void removeEmployee(long id);
 
+    public void disableEmployee(long id);
+
     public Employee getEmployeeById(long id);
 
     public List<Employee> findAllEmployee();

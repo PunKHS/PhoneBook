@@ -12,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%-- Use title from .jsp --%>
-    <%--<title><jsp:invoke fragment="title"/></title>--%>
     <title><spring:message code="page.title"/></title>
 
     <!-- Bootstrap Core CSS -->
