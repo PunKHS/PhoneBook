@@ -80,8 +80,11 @@
                                 <td class="text-left" width="120">${employeeMobilePhone}</td>
                                 <td class="text-left"><form:input path="mobilePhone"/></td>
                             </tr>
+                            <tr hidden="true">
+                                <td class="text-left" width="120">1</td>
+                                <td class="text-left"><form:input path="available"/></td>
+                            </tr>
                         </table>
-
                         <div>
                             <button class="btn btn-success" type="submit">${buttonOk}</button>
                             <a class="btn btn-default" href="/">${buttonCancel}</a>
